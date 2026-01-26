@@ -1,0 +1,67 @@
+/* Input.css */
+/* Global shared tailwindcss styles */
+
+@import 'tailwindcss';
+
+/* Base reset & global styles */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+
+  body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  header {
+    background-color: rgb(112, 163, 163);
+    text-align: center;
+    align-content: center;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  main {
+    flex-grow: 1;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  footer {
+    background-color: rgb(112, 163, 163);
+    text-align: center;
+    align-content: center;
+    height: 60px;
+  }
+}
