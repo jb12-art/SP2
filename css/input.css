@@ -58,6 +58,16 @@
     font-size: 1rem;
   }
 
+  input {
+    height: 1.5rem;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background-color: #f9fafb;
+    margin-bottom: 1.25rem;
+  }
+
   footer {
     background-color: rgb(112, 163, 163);
     text-align: center;
