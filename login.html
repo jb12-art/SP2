@@ -5,8 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="index.html" />
     <link rel="icon" href="#" />
+    <!-- script -->
+    <script type="module" src="./js/pages/login.js" defer></script>
     <title>Login</title>
   </head>
   <body>
@@ -21,30 +22,27 @@
         <h4 class="text-center mt-12">Login</h4>
         <!-- register form -->
         <div class="m-12.5">
-          <div class="register-message" id="registerMessage"></div>
-          <form
-            id="registerForm"
-            class="mx-auto flex flex-col max-w-125 w-[95%]"
-          >
+          <div class="login-message" id="loginMessage"></div>
+          <form id="loginForm" class="mx-auto flex flex-col max-w-125 w-[95%]">
             <!-- email -->
-            <label for="emailRegistration">Email</label>
+            <label for="emailLogin">Email</label>
             <input
               class="form_input"
               type="email"
               name="email"
-              id="emailRegistration"
+              id="emailLogin"
               required
               placeholder="email"
             />
             <small class="error-message" id="emailError"></small>
 
             <!-- password -->
-            <label for="passwordRegistration">Password</label>
+            <label for="passwordLogin">Password</label>
             <input
               class="form_input"
               type="password"
               name="password"
-              id="passwordRegistration"
+              id="passwordLogin"
               required
               placeholder="password"
               minlength="8"
