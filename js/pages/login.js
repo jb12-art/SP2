@@ -1,5 +1,7 @@
 // js/pages/login.js
 
+'use-strict';
+
 import { login } from '../api/auth.js';
 
 const form = document.querySelector('#loginForm');

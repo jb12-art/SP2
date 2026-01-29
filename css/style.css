@@ -7,22 +7,10 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-amber-200: oklch(92.4% 0.12 95.746);
-    --color-amber-400: oklch(82.8% 0.189 84.429);
-    --color-amber-600: oklch(66.6% 0.179 58.318);
-    --color-amber-700: oklch(55.5% 0.163 48.998);
-    --color-blue-50: oklch(97% 0.014 254.604);
-    --color-blue-100: oklch(93.2% 0.032 255.585);
-    --color-blue-200: oklch(88.2% 0.059 254.128);
-    --color-indigo-100: oklch(93% 0.034 272.788);
-    --color-indigo-200: oklch(87% 0.065 274.039);
-    --color-indigo-300: oklch(78.5% 0.115 274.713);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-black: #000;
     --spacing: 0.25rem;
-    --text-sm: 0.875rem;
-    --text-sm--line-height: calc(1.25 / 0.875);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -296,6 +284,34 @@
     padding-right: 0.5rem;
     background-color: #f9fafb;
     margin-bottom: 1.25rem;
+  }
+  #saleItems {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  @media (min-width: 1024px) {
+    #saleItems {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .listing-card {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #c9c6c6;
+    overflow-wrap: break-word;
+  }
+  .listing-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+  .listing-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1rem;
   }
   footer {
     background-color: rgb(112, 163, 163);

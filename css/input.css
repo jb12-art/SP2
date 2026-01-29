@@ -68,6 +68,42 @@
     margin-bottom: 1.25rem;
   }
 
+  /* (mobile view) product items card */
+  #saleItems {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  /* (Desktop view) product items card */
+  @media (min-width: 1024px) {
+    #saleItems {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  /* listing card style */
+  .listing-card {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: #c9c6c6;
+    overflow-wrap: break-word;
+  }
+
+  .listing-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+  }
+
+  .listing-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+
   footer {
     background-color: rgb(112, 163, 163);
     text-align: center;
