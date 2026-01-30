@@ -20,28 +20,37 @@
       </header>
 
       <main>
-        <p class="text-center mt-10 mb-2">
-          Register a user, then Login to use Auction House.
-        </p>
-        <p class="text-center mb-2">Login if you already have a user.</p>
+        <!-- Logged in UI -->
+        <div id="userContent" class="hidden">
+          <div id="avatar"></div>
+          <button id="logoutBtn">Logout</button>
+        </div>
 
-        <!-- register | login buttons -->
-        <div class="justify-center flex gap-3">
-          <a href="register.html"
-            ><button
-              class="bg-gray-50 hover:bg-gray-300 border border-black px-2 rounded cursor-pointer"
-            >
-              Register
-            </button></a
-          >
+        <!-- Logged out UI -->
+        <div id="guestContent">
+          <p class="text-center mt-10 mb-2">
+            Register a user, then Login to use Auction House.
+          </p>
+          <p class="text-center mb-2">Login if you already have a user.</p>
 
-          <a href="login.html"
-            ><button
-              class="bg-gray-50 hover:bg-gray-300 border border-black px-2 rounded cursor-pointer"
+          <!-- register | login buttons -->
+          <div class="justify-center flex gap-3">
+            <a href="register.html"
+              ><button
+                class="bg-gray-50 hover:bg-gray-300 border border-black px-2 rounded cursor-pointer"
+              >
+                Register
+              </button></a
             >
-              Login
-            </button></a
-          >
+
+            <a href="login.html"
+              ><button
+                class="bg-gray-50 hover:bg-gray-300 border border-black px-2 rounded cursor-pointer"
+              >
+                Login
+              </button></a
+            >
+          </div>
         </div>
 
         <!-- Auction House item listings -->

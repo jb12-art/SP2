@@ -15,7 +15,12 @@ form.addEventListener('submit', async (event) => {
 
   try {
     const result = await login(email, password);
+
+    // store token, name, email in localStorage
     localStorage.setItem('token', result.data.accessToken);
+    localStorage.setItem('name', result.data.name);
+    localStorage.setItem('email', result.data.email);
+    localStorage.setItem('avatar', result.data.avatar?.url || '');
 
     window.location.href = 'index.html';
   } catch (error) {

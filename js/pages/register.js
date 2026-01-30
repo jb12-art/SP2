@@ -18,7 +18,7 @@ form.addEventListener('submit', async (event) => {
     await register(name, email, password);
     message.textContent = 'Registration success.';
 
-    window.location.href = 'login.html';
+    window.location.href = '/login.html';
   } catch (error) {
     message.textContent = error.message;
   }

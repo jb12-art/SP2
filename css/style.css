@@ -185,6 +185,9 @@
   .flex {
     display: flex;
   }
+  .hidden {
+    display: none;
+  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -284,6 +287,23 @@
     padding-right: 0.5rem;
     background-color: #f9fafb;
     margin-bottom: 1.25rem;
+  }
+  .hidden {
+    display: none;
+  }
+  #userBar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  #avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  #logoutBtn {
+    border: 1px black solid;
   }
   #saleItems {
     display: grid;

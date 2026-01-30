@@ -4,6 +4,7 @@
 
 import { API_BASE } from '../api/config.js';
 
+// Container for saleItems
 const saleItemsContainer = document.querySelector('#saleItems');
 
 async function fetchListings() {

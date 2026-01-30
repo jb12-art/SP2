@@ -68,6 +68,28 @@
     margin-bottom: 1.25rem;
   }
 
+  /* Not logged in / Logged in  */
+  .hidden {
+    display: none;
+  }
+
+  #userBar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  #avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  #logoutBtn {
+    border: 1px black solid;
+  }
+
   /* (mobile view) product items card */
   #saleItems {
     display: grid;
