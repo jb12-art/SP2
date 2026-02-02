@@ -1,0 +1,101 @@
+<!-- profile.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- link -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" href="#" />
+    <!-- script -->
+    <script></script>
+
+    <title>Profile</title>
+  </head>
+
+  <body>
+    <div class="flex flex-col min-h-screen">
+      <header>
+        <h1>Auction House</h1>
+      </header>
+
+      <main>
+        <!-- credit, profile btn, logout btn div -->
+        <div class="grid grid-cols-6 md:grid-cols-10">
+          <!-- credit -->
+          <div id="creditScore">credit</div>
+          <!-- profile btn -->
+          <a href="profile.html"
+            ><button
+              id="avatarBtn"
+              class="rounded-full w-10 h-10 border border-solid black"
+            ></button
+          ></a>
+          <!-- logout btn -->
+          <a
+            href="index-html"
+            id="logoutBtn"
+            class="col-start-6 md:col-start-10"
+            ><button>Logout</button></a
+          >
+        </div>
+
+        <h4 class="text-center mt-2">Profile</h4>
+        <!-- banner placement -->
+        <div class="border black border-solid h-20" id="bannerImg">Banner</div>
+
+        <!-- avatar placement -->
+        <div class="border black border-solid w-10 h-10" id="avatarImg">
+          Avatar img
+        </div>
+
+        <div>
+          <!-- name -->
+          <div id="userName" class="border border-black max-w-70">Name:</div>
+          <!-- email -->
+          <div id="userEmail" class="border border-black max-w-70">Email:</div>
+        </div>
+
+        <!-- profile form -->
+        <div class="m-1">
+          <form
+            id="profileForm"
+            class="mx-auto flex flex-col max-w-155 w-[95%]"
+          >
+            <!-- banner -->
+            <label for="banner Url">Banner</label>
+            <input
+              class="form_input"
+              id="bannerUrl"
+              type="banner Url"
+              name="banner"
+              placeholder="banner url"
+            />
+            <!-- avatar -->
+            <label for="avatar Url">Avatar</label>
+            <input
+              class="form_input"
+              id="avatarUrl"
+              type="avatar url"
+              name="avatar"
+              placeholder="avatar url"
+            />
+            <!-- bio -->
+            <label for="bio text">Bio</label>
+            <input
+              class="form_input"
+              id="bioText"
+              type="bio text"
+              name="bio"
+              placeholder="bio text"
+            />
+          </form>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2026 Auction House</p>
+      </footer>
+    </div>
+  </body>
+</html>

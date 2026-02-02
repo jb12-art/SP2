@@ -33,5 +33,5 @@ if (token && email) {
 } else {
   // Logget out
   guestContent.classList.remove('hidden');
-  userBar.classList.add('hidden');
+  userContent.classList.add('hidden');
 }
