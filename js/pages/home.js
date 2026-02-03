@@ -3,6 +3,7 @@
 'use-strict';
 
 import { API_BASE } from '../api/config.js';
+// import { createApiKey } from '../api/createApiKey.js';
 
 // Container for saleItems
 const saleItemsContainer = document.querySelector('#saleItems');
@@ -46,3 +47,4 @@ function renderListings(listings) {
 }
 
 fetchListings();
+// createApiKey();

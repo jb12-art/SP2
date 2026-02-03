@@ -6,10 +6,12 @@
 const token = localStorage.getItem('token');
 const email = localStorage.getItem('email');
 const avatarUrl = localStorage.getItem('avatar');
+const credits = localStorage.getItem('credits');
 
 const guestContent = document.querySelector('#guestContent');
 const userContent = document.querySelector('#userContent');
 const avatarContainer = document.querySelector('#avatar');
+const creditContainer = document.querySelector('#credits');
 const logoutBtn = document.querySelector('#logoutBtn');
 
 if (token && email) {
@@ -20,8 +22,11 @@ if (token && email) {
   // avatar
   avatarContainer.innerHTML = `
   <img src="${avatarUrl || 'https://placehold.co/40x40'}"
-  alt="Profile avatar" />
+  alt="Avatar" />
   `;
+
+  // credit
+  creditContainer.textContent = `Credits: ${credits ?? 0}`;
 
   // logout button
 

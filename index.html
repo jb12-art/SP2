@@ -22,9 +22,14 @@
 
       <main>
         <!-- Logged in UI -->
-        <div id="userContent" class="hidden">
-          <div id="avatar"></div>
-          <button id="logoutBtn">Logout</button>
+        <div id="userContent" class="hidden grid grid-cols-6 md:grid-cols-10">
+          <div id="credits"></div>
+          <a href="profile.html">
+            <div id="avatar"></div>
+          </a>
+          <button id="logoutBtn" class="col-start-6 md:col-start-10">
+            Logout
+          </button>
         </div>
 
         <!-- Logged out UI -->

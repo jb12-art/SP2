@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="icon" href="#" />
     <!-- script -->
-    <script></script>
+    <script type="module" src="./js/pages/profile.js" defer></script>
 
     <title>Profile</title>
   </head>
@@ -23,13 +23,10 @@
         <!-- credit, profile btn, logout btn div -->
         <div class="grid grid-cols-6 md:grid-cols-10">
           <!-- credit -->
-          <div id="creditScore">credit</div>
-          <!-- profile btn -->
+          <div id="credits" class="border"></div>
+          <!-- avatar -->
           <a href="profile.html"
-            ><button
-              id="avatarBtn"
-              class="rounded-full w-10 h-10 border border-solid black"
-            ></button
+            ><button id="avatar" class="rounded-full w-10 h-10"></button
           ></a>
           <!-- logout btn -->
           <a
@@ -41,19 +38,23 @@
         </div>
 
         <h4 class="text-center mt-2">Profile</h4>
-        <!-- banner placement -->
+        <!-- banner -->
         <div class="border black border-solid h-20" id="bannerImg">Banner</div>
 
-        <!-- avatar placement -->
-        <div class="border black border-solid w-10 h-10" id="avatarImg">
-          Avatar img
-        </div>
+        <!-- listings -->
+        <p>Listings:</p>
+        <div id="listingsNr" class="border border-black max-w-40"></div>
+        <!-- wins -->
+        <p>Wins:</p>
+        <div id="winsNr" class="border border-black max-w-40"></div>
 
         <div>
           <!-- name -->
-          <div id="userName" class="border border-black max-w-70">Name:</div>
+          <p>Name:</p>
+          <div id="userName" class="border border-black max-w-70"></div>
           <!-- email -->
-          <div id="userEmail" class="border border-black max-w-70">Email:</div>
+          <p>Email:</p>
+          <div id="userEmail" class="border border-black max-w-70"></div>
         </div>
 
         <!-- profile form -->
