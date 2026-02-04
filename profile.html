@@ -9,6 +9,7 @@
     <link rel="icon" href="#" />
     <!-- script -->
     <script type="module" src="./js/pages/profile.js" defer></script>
+    <script type="module" src="./js/pages/authState.js" defer></script>
 
     <title>Profile</title>
   </head>
@@ -16,24 +17,25 @@
   <body>
     <div class="flex flex-col min-h-screen">
       <header>
-        <h1>Auction House</h1>
+        <a href="index.html">
+          <h1>Auction House</h1>
+        </a>
       </header>
 
       <main>
         <!-- credit, profile btn, logout btn div -->
-        <div class="grid grid-cols-6 md:grid-cols-10">
+        <div id="userContent" class="m-1 grid grid-cols-6 md:grid-cols-10">
           <!-- credit -->
-          <div id="credits" class="border"></div>
+          <div id="credits"></div>
           <!-- avatar -->
-          <a href="profile.html"
-            ><button id="avatar" class="rounded-full w-10 h-10"></button
-          ></a>
+          <a href="profile.html" id="avatar" class="col-start-3 md:col-start-2">
+          </a>
           <!-- logout btn -->
           <a
-            href="index-html"
+            href="index.html"
             id="logoutBtn"
             class="col-start-6 md:col-start-10"
-            ><button>Logout</button></a
+            >Logout</a
           >
         </div>
 
@@ -42,19 +44,19 @@
         <div class="border black border-solid h-20" id="bannerImg">Banner</div>
 
         <!-- listings -->
-        <p>Listings:</p>
-        <div id="listingsNr" class="border border-black max-w-40"></div>
+        <p>Listings</p>
+        <div id="listingsNr" class="border border-black w-fit"></div>
         <!-- wins -->
-        <p>Wins:</p>
-        <div id="winsNr" class="border border-black max-w-40"></div>
+        <p>Wins</p>
+        <div id="winsNr" class="border border-black w-fit"></div>
 
         <div>
           <!-- name -->
-          <p>Name:</p>
-          <div id="userName" class="border border-black max-w-70"></div>
+          <p>Name</p>
+          <div id="userName" class="border border-black w-fit"></div>
           <!-- email -->
-          <p>Email:</p>
-          <div id="userEmail" class="border border-black max-w-70"></div>
+          <p>Email</p>
+          <div id="userEmail" class="border border-black w-fit"></div>
         </div>
 
         <!-- profile form -->

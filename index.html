@@ -22,14 +22,19 @@
 
       <main>
         <!-- Logged in UI -->
-        <div id="userContent" class="hidden grid grid-cols-6 md:grid-cols-10">
+        <div
+          id="userContent"
+          class="hidden m-1 grid grid-cols-6 md:grid-cols-10"
+        >
           <div id="credits"></div>
-          <a href="profile.html">
-            <div id="avatar"></div>
+          <a href="profile.html" id="avatar" class="col-start-3 md:col-start-2">
           </a>
-          <button id="logoutBtn" class="col-start-6 md:col-start-10">
-            Logout
-          </button>
+          <a
+            href="index.html"
+            id="logoutBtn"
+            class="col-start-6 md:col-start-10"
+            >Logout
+          </a>
         </div>
 
         <!-- Logged out UI -->
@@ -58,6 +63,17 @@
             >
           </div>
         </div>
+
+        <!-- search bar -->
+        <form role="search" class="flex justify-center items-center mt-10">
+          <input
+            type="search"
+            id="searchItem"
+            name="search"
+            placeholder="search for items"
+            class="w-100"
+          />
+        </form>
 
         <!-- Auction House item listings -->
         <div id="saleItems"></div>

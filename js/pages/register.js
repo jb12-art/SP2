@@ -5,27 +5,34 @@
 import { register } from '../api/auth.js';
 
 const form = document.querySelector('#registerForm');
-const message = document.querySelector('#registerMessage');
+const registerMessage = document.querySelector('#registerMessage');
+const emailError = document.querySelector('#emailError');
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const name = document.querySelector('#nameRegistration').value;
-  const email = document.querySelector('#emailRegistration').value;
+  const email = document.querySelector('#emailRegistration').value.trim();
   const password = document.querySelector('#passwordRegistration').value;
 
+  // clear old messages
+  registerMessage.textContent = '';
+  emailError.textContent = '';
+
+  // check if email is ending with @stud.noroff.no
+  if (!email.endsWith('@stud.noroff.no')) {
+    emailError.textContent = 'You must use a @stud.noroff.no email address';
+
+    return;
+  }
+
+  // Only correct emails are valid
   try {
     await register(name, email, password);
-    message.textContent = 'Registration success.';
+    registerMessage.textContent = 'Registration success.';
 
     window.location.href = '/login.html';
   } catch (error) {
-    message.textContent = error.message;
-  }
-
-  if (!email.endsWith('@stud.noroff.no')) {
-    message.textContent = 'You must use a @stud.noroff.no email address';
-
-    return;
+    registerMessage.textContent = error.message;
   }
 });

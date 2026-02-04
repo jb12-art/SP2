@@ -29,7 +29,8 @@ async function loadProfile() {
     alt="${profile.banner?.alt || ''}" />
     `;
 
-    credits.textContent = `Credits: ${profile.credits}`;
+    credits.textContent = `Credits: ${profile.credits} 
+    `;
     userName.textContent = profile.name;
     userEmail.textContent = profile.email;
     listingsNr.textContent = profile._count.listings;
