@@ -7,7 +7,10 @@ import { API_BASE } from '../api/config.js';
 
 // Container for saleItems
 const saleItemsContainer = document.querySelector('#saleItems');
+// searchBar input
+const searchInput = document.querySelector('#searchItem');
 
+// function saleItems
 async function fetchListings() {
   try {
     const response = await fetch(`${API_BASE}/auction/listings`);
@@ -16,6 +19,25 @@ async function fetchListings() {
 
     if (!response.ok) {
       throw new Error('Failed to fetch listings...');
+    }
+
+    renderListings(data.data);
+  } catch (error) {
+    saleItemsContainer.textContent = error.message;
+  }
+}
+
+// search bar function
+async function searchListings(query) {
+  try {
+    const response = await fetch(
+      `${API_BASE}/auction/listings/search?q=${encodeURIComponent(query)}&title=true&description=true`,
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error('Search failed');
     }
 
     renderListings(data.data);
@@ -45,6 +67,17 @@ function renderListings(listings) {
     saleItemsContainer.appendChild(card);
   });
 }
+
+// search bar function
+searchInput.addEventListener('input', (event) => {
+  const query = event.target.value.trim();
+
+  if (query === '') {
+    fetchListings(); // show all items again
+  } else {
+    searchListings(query);
+  }
+});
 
 fetchListings();
 // createApiKey();

@@ -41,23 +41,29 @@
 
         <h4 class="text-center mt-2">Profile</h4>
         <!-- banner -->
-        <div class="border black border-solid h-20" id="bannerImg">Banner</div>
+        <div class="border black border-solid h-20 mb-2" id="bannerImg">
+          Banner
+        </div>
 
-        <!-- listings -->
-        <p>Listings</p>
-        <div id="listingsNr" class="border border-black w-fit"></div>
-        <!-- wins -->
-        <p>Wins</p>
-        <div id="winsNr" class="border border-black w-fit"></div>
-
-        <div>
+        <!-- name and email -->
+        <section class="mb-10 mx-auto flex flex-col w-[95%]">
           <!-- name -->
           <p>Name</p>
-          <div id="userName" class="border border-black w-fit"></div>
+          <div id="userName" class="border border-black w-fit mb-2"></div>
           <!-- email -->
           <p>Email</p>
-          <div id="userEmail" class="border border-black w-fit"></div>
-        </div>
+          <div id="userEmail" class="border border-black w-fit mb-2"></div>
+
+          <!-- listings -->
+          <p>Listings</p>
+          <div id="listingsNr" class="border border-black w-fit mb-2"></div>
+          <!-- bids -->
+          <p>Bids</p>
+          <div id="bidsNr" class="border border-black w-fit mb-2"></div>
+          <!-- wins -->
+          <p>Wins</p>
+          <div id="winsNr" class="border border-black w-fit"></div>
+        </section>
 
         <!-- profile form -->
         <div class="m-1">
@@ -86,12 +92,17 @@
             <!-- bio -->
             <label for="bio text">Bio</label>
             <input
-              class="form_input"
+              class="form_input h-20"
               id="bioText"
               type="bio text"
               name="bio"
-              placeholder="bio text"
+              placeholder="Add text to your profile"
             />
+
+            <!-- button -->
+            <div>
+              <input type="submit" value="Edit ok" class="cursor-pointer" />
+            </div>
           </form>
         </div>
       </main>
