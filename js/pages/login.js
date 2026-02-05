@@ -3,6 +3,7 @@
 'use-strict';
 
 import { login } from '../api/auth.js';
+import { getProfile } from '../api/profileApi.js';
 
 const form = document.querySelector('#loginForm');
 const message = document.querySelector('#loginMessage');
@@ -20,6 +21,12 @@ form.addEventListener('submit', async (event) => {
     localStorage.setItem('token', result.data.accessToken);
     localStorage.setItem('name', result.data.name);
     localStorage.setItem('email', result.data.email);
+
+    // fetch profile info/ credits /avatar
+    const profile = await getProfile();
+
+    localStorage.setItem('credits', profile.credits);
+    localStorage.setItem('avatar', profile.avatar?.url || '');
 
     window.location.href = 'index.html';
   } catch (error) {

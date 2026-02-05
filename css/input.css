@@ -69,14 +69,14 @@
   }
 
   /* Not logged in / Logged in  */
-  .hidden {
+  .hide {
     display: none;
   }
 
   #userContent {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    /* gap: 1rem; */
   }
 
   #credits {

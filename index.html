@@ -22,12 +22,9 @@
 
       <main>
         <!-- Logged in UI -->
-        <div
-          id="userContent"
-          class="hidden m-1 grid grid-cols-6 md:grid-cols-10"
-        >
+        <div id="userContent" class="hide m-1 grid grid-cols-6 md:grid-cols-10">
           <div id="credits"></div>
-          <a href="profile.html" id="avatar" class="col-start-3 md:col-start-2">
+          <a href="profile.html" id="avatar" class="col-start-4 md:col-start-2">
           </a>
           <a
             href="index.html"
@@ -65,12 +62,16 @@
         </div>
 
         <!-- search bar -->
-        <form role="search" class="flex justify-center items-center mt-10">
+        <form
+          role="search"
+          class="flex justify-center items-center mt-10 ml-2 mr-2"
+        >
           <input
             type="search"
             id="searchItem"
             name="search"
             placeholder="search for items"
+            aria-label="search for items"
             class="w-100"
           />
         </form>
