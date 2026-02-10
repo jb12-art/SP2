@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="icon" href="#" />
     <!-- script -->
-    <script type="module" src="./js/pages/register.js" defer></script>
+    <script type="module" src="./js/pages/register.js"></script>
 
     <title>Register</title>
   </head>
@@ -37,10 +37,13 @@
             <!-- name -->
             <label for="nameRegistration">Name</label>
             <input
-              class="form_input"
-              type="name"
+              type="text"
               name="name"
               id="nameRegistration"
+              aria-label="type a username"
+              aria-describedby="nameError"
+              pattern="[a-zA-Z0-9_]+"
+              title="Name must not contain spaces or special characters (letters, numbers, and underscores only)."
               required
               placeholder="name"
             />
@@ -49,22 +52,26 @@
             <!-- email -->
             <label for="emailRegistration">Email</label>
             <input
-              class="form_input"
               type="email"
               name="email"
               id="emailRegistration"
+              aria-label="type an email address that ends in @stud.noroff.no"
+              aria-describedby="emailError"
+              pattern="[a-zA-Z0-9._%+\-]+@stud\.noroff\.no"
+              title="Enter a email address that ends in @stud.noroff.no"
               required
-              placeholder="email"
+              placeholder="example email@stud.noroff.no"
             />
             <small class="error-message bg-red-400" id="emailError"></small>
 
             <!-- password -->
             <label for="passwordRegistration">Password</label>
             <input
-              class="form_input"
               type="password"
               name="password"
               id="passwordRegistration"
+              aria-label="type a password that is minimum 8 characters"
+              aria-describedby="passwordError"
               required
               placeholder="password"
               minlength="8"

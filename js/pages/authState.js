@@ -22,7 +22,7 @@ if (token && email) {
   // avatar
   avatarContainer.innerHTML = `
   <img src="${avatarUrl || 'https://placehold.co/40x40'}"
-  alt="Avatar" />
+  alt="Profile Avatar"/>
   `;
 
   // credit

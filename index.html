@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="icon" href="#" />
     <!-- script -->
-    <script type="module" src="./js/api/auth.js" defer></script>
-    <script type="module" src="./js/pages/authState.js" defer></script>
-    <script type="module" src="./js/pages/home.js" defer></script>
+    <script type="module" src="./js/api/auth.js"></script>
+    <script type="module" src="./js/pages/authState.js"></script>
+    <script type="module" src="./js/pages/home.js"></script>
     <title>Home</title>
   </head>
 
@@ -23,12 +23,20 @@
       <main>
         <!-- Logged in UI -->
         <div id="userContent" class="hide m-1 grid grid-cols-6 md:grid-cols-10">
-          <div id="credits"></div>
-          <a href="profile.html" id="avatar" class="col-start-4 md:col-start-2">
+          <div id="credits" aria-label="Your credits to spend"></div>
+
+          <a
+            href="profile.html"
+            id="avatar"
+            aria-label="Go to profile"
+            class="col-start-4 md:col-start-2"
+          >
           </a>
+
           <a
             href="index.html"
             id="logoutBtn"
+            aria-label="Logout from Auction House"
             class="col-start-6 md:col-start-10"
             >Logout
           </a>

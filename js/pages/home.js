@@ -5,27 +5,10 @@
 import { API_BASE } from '../api/config.js';
 // import { createApiKey } from '../api/createApiKey.js';
 
-// Container for saleItems
-const saleItemsContainer = document.querySelector('#saleItems');
 // searchBar input
 const searchInput = document.querySelector('#searchItem');
-
-// function saleItems
-async function fetchListings() {
-  try {
-    const response = await fetch(`${API_BASE}/auction/listings`);
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch listings...');
-    }
-
-    renderListings(data.data);
-  } catch (error) {
-    saleItemsContainer.textContent = error.message;
-  }
-}
+// Container for saleItems
+const saleItemsContainer = document.querySelector('#saleItems');
 
 // search bar function
 async function searchListings(query) {
@@ -46,6 +29,24 @@ async function searchListings(query) {
   }
 }
 
+// function saleItems
+async function fetchListings() {
+  try {
+    const response = await fetch(`${API_BASE}/auction/listings`);
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch listings...');
+    }
+
+    renderListings(data.data);
+  } catch (error) {
+    saleItemsContainer.textContent = error.message;
+  }
+}
+
+// saleItemsContainer function
 function renderListings(listings) {
   saleItemsContainer.innerHTML = '';
 

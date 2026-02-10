@@ -11,6 +11,19 @@ const emailError = document.querySelector('#emailError');
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
+  // 1. Reset all error displays
+  document
+    .querySelectorAll('.error-message')
+    .forEach((el) => (el.textContent = ''));
+  registerMessage.textContent = '';
+
+  // 2. HTML Validation check
+  // Double security with both JS/ HTML that guards the input
+  if (!form.checkValidity()) {
+    form.reportValidity(); // browser validation bubble
+    return;
+  }
+
   const name = document.querySelector('#nameRegistration').value;
   const email = document.querySelector('#emailRegistration').value.trim();
   const password = document.querySelector('#passwordRegistration').value;
@@ -29,10 +42,23 @@ form.addEventListener('submit', async (event) => {
   // Only correct emails are valid
   try {
     await register(name, email, password);
-    registerMessage.textContent = 'Registration success.';
+    registerMessage.className = 'text-green-600';
+    registerMessage.textContent = 'Registration success! Redirecting...';
 
-    window.location.href = '/login.html';
+    setTimeout(() => (window.location.href = '/login.html'), 2000);
   } catch (error) {
-    registerMessage.textContent = error.message;
+    const msg = error.message.toLowerCase();
+
+    // 3. Map the error to the correct input field
+    if (msg.includes('email')) {
+      emailError.textContent = error.message;
+    } else if (msg.includes('name') || msg.includes('username')) {
+      document.querySelector('#nameError').textContent = error.message;
+    } else if (msg.includes('password')) {
+      document.querySelector('#passwordError').textContent = error.message;
+    } else {
+      // fallback for general errors
+      registerMessage.textContent = error.message;
+    }
   }
 });

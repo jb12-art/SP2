@@ -58,6 +58,14 @@
     font-size: 1rem;
   }
 
+  /* register.html */
+  .register-message {
+    margin: 1rem auto;
+    text-align: center;
+    width: 300px;
+    background-color: red;
+  }
+
   input {
     height: 1.5rem;
     border: 1px solid black;
