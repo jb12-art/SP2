@@ -45,7 +45,10 @@
           Banner
         </div>
 
-        <!-- name and email -->
+        <!-- where profile bio text go -->
+        <div id="profileText"></div>
+
+        <!-- name, email, listings, bids, wins -->
         <section class="mb-10 mx-auto flex flex-col w-[95%]">
           <!-- name -->
           <p>Name</p>
@@ -67,6 +70,10 @@
 
         <!-- profile form -->
         <div class="m-1">
+          <small
+            class="block mx-auto w-fit bg-red-400"
+            id="profileFormError"
+          ></small>
           <form
             id="profileForm"
             class="mx-auto flex flex-col max-w-155 w-[95%]"
@@ -75,7 +82,7 @@
             <label for="banner Url">Banner</label>
             <input
               id="bannerUrl"
-              type="banner Url"
+              type="url"
               name="banner"
               placeholder="banner url"
             />
@@ -83,7 +90,7 @@
             <label for="avatar Url">Avatar</label>
             <input
               id="avatarUrl"
-              type="avatar url"
+              type="url"
               name="avatar"
               placeholder="avatar url"
             />
@@ -92,14 +99,14 @@
             <input
               class="h-20"
               id="bioText"
-              type="bio text"
+              type="text"
               name="bio"
               placeholder="Add text to your profile"
             />
 
             <!-- button -->
             <div>
-              <input type="submit" value="Edit ok" class="cursor-pointer" />
+              <input type="submit" value="Update" class="cursor-pointer" />
             </div>
           </form>
         </div>

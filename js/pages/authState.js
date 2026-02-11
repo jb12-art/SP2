@@ -16,27 +16,41 @@ const logoutBtn = document.querySelector('#logoutBtn');
 
 if (token && email) {
   // Logged in
-  guestContent.classList.add('hidden');
-  userContent.classList.remove('hidden');
+  if (guestContent) {
+    guestContent.classList.add('hidden');
+  }
+
+  if (userContent) {
+    userContent.classList.remove('hidden');
+  }
 
   // avatar
-  avatarContainer.innerHTML = `
-  <img src="${avatarUrl || 'https://placehold.co/40x40'}"
-  alt="Profile Avatar"/>
-  `;
+  if (avatarContainer) {
+    avatarContainer.innerHTML = `
+    <img src="${avatarUrl || 'https://placehold.co/40x40'}"
+    alt="Profile Avatar"/>
+    `;
+  }
 
   // credit
-  creditContainer.textContent = `Credits: ${credits || 0}`;
+  if (creditContainer) {
+    creditContainer.textContent = `Credits: ${credits || 0}`;
+  }
 
   // logout button
-
-  // Logout logic
-  logoutBtn.addEventListener('click', () => {
-    localStorage.clear();
-    window.location.href = 'index.html';
-  });
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.clear();
+      window.location.href = 'index.html';
+    });
+  }
 } else {
   // Logget out
-  guestContent.classList.remove('hidden');
-  userContent.classList.add('hidden');
+  if (guestContent) {
+    guestContent.classList.remove('hidden');
+  }
+
+  if (userContent) {
+    userContent.classList.add('hidden');
+  }
 }

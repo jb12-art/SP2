@@ -58,7 +58,7 @@
     font-size: 1rem;
   }
 
-  /* register.html */
+  /* register.html, profile.html/.js */
   .register-message {
     margin: 1rem auto;
     text-align: center;
@@ -84,7 +84,6 @@
   #userContent {
     display: flex;
     align-items: center;
-    /* gap: 1rem; */
   }
 
   #credits {
