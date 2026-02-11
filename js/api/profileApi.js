@@ -1,6 +1,6 @@
 // js/api/profileApi.js
 
-'use-strict';
+'use strict';
 
 import { API_BASE, API_KEY } from './config.js';
 

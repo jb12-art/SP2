@@ -53,14 +53,12 @@
             <label for="emailRegistration">Email</label>
             <input
               type="email"
-              name="email"
               id="emailRegistration"
-              aria-label="type an email address that ends in @stud.noroff.no"
-              aria-describedby="emailError"
-              pattern="[a-zA-Z0-9._%+\-]+@stud\.noroff\.no"
-              title="Enter a email address that ends in @stud.noroff.no"
+              name="email"
               required
-              placeholder="example email@stud.noroff.no"
+              title="Enter an email address that ends in @stud.noroff.no"
+              placeholder="example@stud.noroff.no"
+              aria-label="type an email address that ends in @stud.noroff.no"
             />
             <small class="error-message bg-red-400" id="emailError"></small>
 
@@ -73,6 +71,7 @@
               aria-label="type a password that is minimum 8 characters"
               aria-describedby="passwordError"
               required
+              title="password need to be minimum 8 characters"
               placeholder="password"
               minlength="8"
             />

@@ -1,6 +1,6 @@
 // auth.js
 
-'use-strict';
+'use strict';
 
 import { API_BASE, API_AUTH, API_LOGIN, API_REGISTER } from './config.js';
 

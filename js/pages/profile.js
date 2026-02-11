@@ -1,6 +1,6 @@
 // js/pages/profile.js
 
-'use-strict';
+'use strict';
 
 import { getProfile } from '../api/profileApi.js';
 

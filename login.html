@@ -36,7 +36,9 @@
               name="email"
               id="emailLogin"
               required
-              placeholder="email@stud.noroff.no"
+              title="Enter an email address that ends in @stud.noroff.no"
+              placeholder="example@stud.noroff.no"
+              aria-label="type an email address that ends in @stud.noroff.no"
             />
             <small class="error-message" id="emailError"></small>
 
@@ -47,6 +49,7 @@
               name="password"
               id="passwordLogin"
               required
+              title="password need to be minimum 8 characters"
               placeholder="password"
               minlength="8"
             />

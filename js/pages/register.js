@@ -1,6 +1,6 @@
 // js/pages/register.js
 
-'use-strict';
+'use strict';
 
 import { register } from '../api/auth.js';
 
@@ -34,7 +34,7 @@ form.addEventListener('submit', async (event) => {
 
   // check if email is ending with @stud.noroff.no
   if (!email.endsWith('@stud.noroff.no')) {
-    emailError.textContent = 'You must use a @stud.noroff.no email address';
+    emailError.textContent = 'You must use an @stud.noroff.no email address';
 
     return;
   }

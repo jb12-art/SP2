@@ -1,7 +1,7 @@
 // js/pages/authState.js
 // What the user sees.
 
-'use-strict';
+'use strict';
 
 const token = localStorage.getItem('token');
 const email = localStorage.getItem('email');

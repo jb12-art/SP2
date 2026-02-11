@@ -1,6 +1,6 @@
 // js/pages/login.js
 
-'use-strict';
+'use strict';
 
 import { login } from '../api/auth.js';
 import { getProfile } from '../api/profileApi.js';

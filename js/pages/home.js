@@ -1,6 +1,6 @@
 // js/pages/home.js
 
-'use-strict';
+'use strict';
 
 import { API_BASE } from '../api/config.js';
 // import { createApiKey } from '../api/createApiKey.js';

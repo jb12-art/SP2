@@ -1,6 +1,6 @@
 // config.js
 // API from school.
-'user-strict'; // Strict mode in local browser
+'use strict'; // Strict mode in local browser
 
 export const API_KEY = 'a93bf639-ca8a-445d-abdc-4e7a590988df';
 export const API_KEY_URL = '/create-api-key';
