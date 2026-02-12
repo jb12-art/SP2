@@ -22,17 +22,22 @@
 
       <main>
         <!-- Logged in UI -->
-        <div id="userContent" class="hide m-1 grid grid-cols-6 md:grid-cols-10">
-          <div id="credits" aria-label="Your credits to spend"></div>
-
+        <div id="userContent" class="hide m-2 grid grid-cols-6 md:grid-cols-10">
+          <!-- credit -->
+          <div
+            id="credits"
+            aria-label="Your credit to spend"
+            class="md:col-start-2"
+          ></div>
+          <!-- avatar -->
           <a
             href="profile.html"
             id="avatar"
             aria-label="Go to profile"
-            class="col-start-4 md:col-start-2"
+            class="col-start-4 md:col-start-3"
           >
           </a>
-
+          <!-- logout button -->
           <a
             href="index.html"
             id="logoutBtn"

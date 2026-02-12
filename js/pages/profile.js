@@ -13,6 +13,7 @@ const listingsNr = document.querySelector('#listingsNr');
 const bidsNr = document.querySelector('#bidsNr');
 const winsNr = document.querySelector('#winsNr');
 const profileFormError = document.querySelector('#profileFormError');
+const profileText = document.querySelector('#profileText');
 
 // =============
 // load profile
@@ -21,20 +22,23 @@ async function loadProfile() {
   try {
     const profile = await getProfile();
 
+    credits.textContent = `Credits: ${profile.credits} 
+    `;
+
     // avatar
     avatar.innerHTML = `
-    <img src="${profile.avatar?.url || 'https://placehold.co/40x40'}"
+    <img src="${profile.avatar?.url || 'images\bailey-zindel-NRQV-hBF10M-unsplash.jpg'}"
     alt="${profile.avatar?.alt || ''}" />
     `;
 
     // banner
     banner.innerHTML = `
-    <img src="${profile.banner?.url || 'https://placehold.co/1920x80'}"
+    <img src="${profile.banner?.url || 'images\andrei-castanha-raGhqxN-0A0-unsplash.jpg'}"
     alt="${profile.banner?.alt || ''}" />
     `;
 
-    credits.textContent = `Credits: ${profile.credits} 
-    `;
+    profileText.textContent = profile.bio || 'No bio added.';
+
     userName.textContent = profile.name;
     userEmail.textContent = profile.email;
 
@@ -60,18 +64,18 @@ profileForm.addEventListener('submit', async (event) => {
 
   profileFormError.textContent = '';
 
-  const bannerUrl = document.querySelector('#bannerUrl').value.trim();
   const avatarUrl = document.querySelector('#avatarUrl').value.trim();
+  const bannerUrl = document.querySelector('#bannerUrl').value.trim();
   const bioText = document.querySelector('#bioText').value.trim();
 
   const updates = {};
 
-  if (bannerUrl) {
-    updates.banner = { url: bannerUrl };
-  }
-
   if (avatarUrl) {
     updates.avatar = { url: avatarUrl };
+  }
+
+  if (bannerUrl) {
+    updates.banner = { url: bannerUrl };
   }
 
   if (bioText) {

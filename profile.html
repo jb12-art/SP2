@@ -24,11 +24,15 @@
 
       <main>
         <!-- credit, profile btn, logout btn div -->
-        <div id="userContent" class="m-1 grid grid-cols-6 md:grid-cols-10">
+        <div id="userContent" class="m-2 grid grid-cols-6 md:grid-cols-10">
           <!-- credit -->
-          <div id="credits"></div>
+          <div
+            id="credits"
+            aria-label="Your credit to spend"
+            class="md:col-start-2"
+          ></div>
           <!-- avatar -->
-          <a href="profile.html" id="avatar" class="col-start-4 md:col-start-2">
+          <a href="profile.html" id="avatar" class="col-start-4 md:col-start-3">
           </a>
           <!-- logout btn -->
           <a
@@ -41,12 +45,15 @@
 
         <h4 class="text-center mt-2">Profile</h4>
         <!-- banner -->
-        <div class="border black border-solid h-20 mb-2" id="bannerImg">
-          Banner
-        </div>
+        <div class="h-24 mb-2" id="bannerImg"></div>
 
-        <!-- where profile bio text go -->
-        <div id="profileText"></div>
+        <!-- profile bio text -->
+        <section class="grid grid-cols-8">
+          <div
+            id="profileText"
+            class="col-start-2 col-end-8 border border-solid border-black"
+          ></div>
+        </section>
 
         <!-- name, email, listings, bids, wins -->
         <section class="mb-10 mx-auto flex flex-col w-[95%]">
@@ -56,16 +63,26 @@
           <!-- email -->
           <p>Email</p>
           <div id="userEmail" class="border border-black w-fit mb-2"></div>
+        </section>
 
-          <!-- listings -->
-          <p>Listings</p>
-          <div id="listingsNr" class="border border-black w-fit mb-2"></div>
+        <!-- listings -->
+        <section class="mb-10 mx-auto flex flex-col w-[95%]">
+          <div>
+            <p>Listings</p>
+            <div id="listingsNr" class="border border-black w-fit mb-2"></div>
+          </div>
+
           <!-- bids -->
-          <p>Bids</p>
-          <div id="bidsNr" class="border border-black w-fit mb-2"></div>
+          <div>
+            <p>Bids</p>
+            <div id="bidsNr" class="border border-black w-fit mb-2"></div>
+          </div>
+
           <!-- wins -->
-          <p>Wins</p>
-          <div id="winsNr" class="border border-black w-fit"></div>
+          <div>
+            <p>Wins</p>
+            <div id="winsNr" class="border border-black w-fit"></div>
+          </div>
         </section>
 
         <!-- profile form -->
@@ -78,14 +95,6 @@
             id="profileForm"
             class="mx-auto flex flex-col max-w-155 w-[95%]"
           >
-            <!-- banner -->
-            <label for="banner Url">Banner</label>
-            <input
-              id="bannerUrl"
-              type="url"
-              name="banner"
-              placeholder="banner url"
-            />
             <!-- avatar -->
             <label for="avatar Url">Avatar</label>
             <input
@@ -94,6 +103,15 @@
               name="avatar"
               placeholder="avatar url"
             />
+            <!-- banner -->
+            <label for="banner Url">Banner</label>
+            <input
+              id="bannerUrl"
+              type="url"
+              name="banner"
+              placeholder="banner url"
+            />
+
             <!-- bio -->
             <label for="bio text">Bio</label>
             <input
