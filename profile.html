@@ -32,7 +32,7 @@
             class="md:col-start-2"
           ></div>
           <!-- avatar -->
-          <a href="profile.html" id="avatar" class="col-start-4 md:col-start-3">
+          <a href="profile.html" id="avatar" class="col-start-4 md:col-start-4">
           </a>
           <!-- logout btn -->
           <a
@@ -48,41 +48,42 @@
         <div class="h-24 mb-2" id="bannerImg"></div>
 
         <!-- profile bio text -->
-        <section class="grid grid-cols-8">
-          <div
-            id="profileText"
-            class="col-start-2 col-end-8 border border-solid border-black"
-          ></div>
+        <section class="mx-auto flex flex-col w-[95%] mb-14 md:w-5xl">
+          <div id="profileText" class="border border-black"></div>
         </section>
 
         <!-- name, email, listings, bids, wins -->
-        <section class="mb-10 mx-auto flex flex-col w-[95%]">
+        <section class="mx-auto flex flex-col w-[95%] mb-14 md:w-5xl">
           <!-- name -->
           <p>Name</p>
           <div id="userName" class="border border-black w-fit mb-2"></div>
+          <hr />
+
           <!-- email -->
           <p>Email</p>
           <div id="userEmail" class="border border-black w-fit mb-2"></div>
-        </section>
+          <hr />
 
-        <!-- listings -->
-        <section class="mb-10 mx-auto flex flex-col w-[95%]">
+          <!-- listings -->
           <div>
             <p>Listings</p>
             <div id="listingsNr" class="border border-black w-fit mb-2"></div>
           </div>
+          <hr />
 
           <!-- bids -->
           <div>
             <p>Bids</p>
             <div id="bidsNr" class="border border-black w-fit mb-2"></div>
           </div>
+          <hr />
 
           <!-- wins -->
           <div>
             <p>Wins</p>
-            <div id="winsNr" class="border border-black w-fit"></div>
+            <div id="winsNr" class="border border-black w-fit mb-2"></div>
           </div>
+          <hr />
         </section>
 
         <!-- profile form -->
@@ -91,10 +92,7 @@
             class="block mx-auto w-fit bg-red-400"
             id="profileFormError"
           ></small>
-          <form
-            id="profileForm"
-            class="mx-auto flex flex-col max-w-155 w-[95%]"
-          >
+          <form id="profileForm" class="mx-auto flex flex-col w-[95%] md:w-5xl">
             <!-- avatar -->
             <label for="avatar Url">Avatar</label>
             <input
