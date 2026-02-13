@@ -52,7 +52,7 @@
           <div id="profileText" class="border border-black"></div>
         </section>
 
-        <!-- name, email, listings, bids, wins -->
+        <!-- name, email, (stats of all) = listings, bids, wins -->
         <section class="mx-auto flex flex-col w-[95%] mb-14 md:w-5xl">
           <!-- name -->
           <p>Name</p>
@@ -84,6 +84,18 @@
             <div id="winsNr" class="border border-black w-fit mb-2"></div>
           </div>
           <hr />
+        </section>
+
+        <!-- user listings in auction -->
+        <section class="mx-auto w-[95%] mb-14 md:w-5xl">
+          <h4>Your Listings</h4>
+          <div id="userListings" class="grid gap-4"></div>
+        </section>
+
+        <!-- user bids in auction -->
+        <section class="mx-auto w-[95%] mb-14 md:w-5xl">
+          <h4>Your Bids</h4>
+          <div id="userBids" class="grid gap-4"></div>
         </section>
 
         <!-- profile form -->

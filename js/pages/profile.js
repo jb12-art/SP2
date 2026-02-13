@@ -10,7 +10,9 @@ const banner = document.querySelector('#bannerImg');
 const userName = document.querySelector('#userName');
 const userEmail = document.querySelector('#userEmail');
 const listingsNr = document.querySelector('#listingsNr');
+const userListingsContainer = document.querySelector('#userListings');
 const bidsNr = document.querySelector('#bidsNr');
+const userBidsContainer = document.querySelector('#userBids');
 const winsNr = document.querySelector('#winsNr');
 const profileFormError = document.querySelector('#profileFormError');
 const profileText = document.querySelector('#profileText');
@@ -45,6 +47,55 @@ async function loadProfile() {
     listingsNr.textContent = profile._count?.listings || 0;
     bidsNr.textContent = profile._count?.bids || 0;
     winsNr.textContent = profile._count?.wins || 0;
+
+    // =====================
+    // render user listings
+    // =====================
+    userListingsContainer.innerHTML = '';
+
+    if (profile.listings?.length) {
+      profile.listings.forEach((listing) => {
+        const card = document.createElement('div');
+
+        card.className = 'border p-2';
+
+        card.innerHTML = `
+        <a href="listing.html?id=${listing.id}" class="block cursor-pointer">
+        <h5>${listing.title}</h5>
+        <p>${listing.description || ''}</p>
+        <p>Bids: ${listing._count?.bids || 0}</p>
+        </a>
+        `;
+
+        userListingsContainer.appendChild(card);
+      });
+    } else {
+      userListingsContainer.textContent = 'No listings yet.';
+    }
+
+    // =================
+    // render user bids
+    // =================
+    userBidsContainer.innerHTML = '';
+
+    if (profile.bids?.length) {
+      profile.bids.forEach((bid) => {
+        const card = document.createElement('div');
+
+        card.className = 'border p-2';
+
+        card.innerHTML = `
+        <a href="listing.html?id=${bid.listing?.id}" class="block cursor-pointer">
+        <h5>${bid.listing?.title || 'Listing'}</h5>
+        <p>Your bid: ${bid.amount}</p>
+        </a>
+        `;
+
+        userBidsContainer.appendChild(card);
+      });
+    } else {
+      userBidsContainer.textContent = 'No bids yet.';
+    }
 
     // store for reuse on index.html
     localStorage.setItem('credits', profile.credits);

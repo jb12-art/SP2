@@ -4,7 +4,9 @@
 
 import { API_BASE, API_KEY } from './config.js';
 
+// ============
 // get profile
+// ============
 export async function getProfile() {
   const token = localStorage.getItem('token');
   const name = localStorage.getItem('name');
@@ -14,7 +16,7 @@ export async function getProfile() {
   }
 
   const response = await fetch(
-    `${API_BASE}/auction/profiles/${name}?_listings=true&_wins=true`,
+    `${API_BASE}/auction/profiles/${name}?_listings=true&_wins=true&_bids=true`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -32,7 +34,9 @@ export async function getProfile() {
   return data.data;
 }
 
+// ===============
 // update profile
+// ===============
 export async function updateProfile(updates) {
   const token = localStorage.getItem('token');
   const name = localStorage.getItem('name');

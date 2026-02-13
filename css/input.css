@@ -81,6 +81,7 @@
     display: none;
   }
 
+  /* All id's="#" are connected to JavaScript */
   #userContent {
     display: flex;
     align-items: center;
