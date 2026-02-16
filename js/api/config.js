@@ -1,4 +1,4 @@
-// config.js
+// js/api/config.js
 // API from school.
 'use strict'; // Strict mode in local browser
 

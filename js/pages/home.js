@@ -55,6 +55,7 @@ function renderListings(listings) {
     card.classList.add('listing-card');
 
     card.innerHTML = `
+    <a href="listing.html?id=${item.id}" class="block">
     <img
     src="${item.media?.[0]?.url || 'https://placehold.co/600x400'}"
     alt="${item.title}"
@@ -63,6 +64,7 @@ function renderListings(listings) {
     <h3>${item.title}</h3>
     <p>${item.description || ' No description provided'}</p>
     <p><strong>Ends:</strong> ${new Date(item.endsAt).toLocaleDateString()}</p>
+    </a>
     `;
 
     saleItemsContainer.appendChild(card);
