@@ -8,6 +8,7 @@
     <link rel="icon" href="#" />
     <!-- script -->
     <script type="module" src="./js/pages/listing.js"></script>
+    <script type="module" src="./js/pages/authState.js"></script>
     <title>Listing</title>
   </head>
 
@@ -20,32 +21,84 @@
       </header>
 
       <main>
-        <h2>Listing</h2>
+        <div id="userContent" class="hide m-2 grid grid-cols-6 md:grid-cols-10">
+          <!-- credit -->
+          <div
+            id="credits"
+            aria-label="Your credit to spend"
+            class="md:col-start-2"
+          ></div>
+          <!-- avatar -->
+          <a
+            href="profile.html"
+            id="avatar"
+            aria-label="Go to profile"
+            class="col-start-4 md:col-start-4"
+          >
+          </a>
+        </div>
         <hr />
 
-        <img id="listingImage" alt="Listing image" style="max-width: 400px" />
+        <h1 class="text-center mb-7 mt-2">Listing</h1>
+        <hr class="mb-5" />
 
-        <h3 id="listingTitle"></h3>
+        <!-- auction item -->
+        <section class="mx-auto flex flex-col w-[95%] md:w-5xl mb-4 border-2">
+          <img
+            id="listingImage"
+            class="md:max-h-[900px] object-contain"
+            alt="Listing image"
+          />
 
-        <div id="listingDescription"></div>
+          <h3 id="listingTitle" class="bg-gray-300"></h3>
+          <hr class="mb-2" />
 
-        <p><strong>Seller:</strong> <span id="listingSeller"></span></p>
+          <div id="listingDescription" class="bg-gray-300"></div>
+          <hr class="mb-2" />
 
-        <p>
-          <strong>Highest bid:</strong>
-          <span id="currentBid">No bids yet</span>
-        </p>
+          <p class="bg-gray-300">
+            <strong>Seller:</strong> <span id="listingSeller"></span>
+          </p>
+        </section>
 
-        <div class="bid-section">
-          <input type="number" id="bidAmount" placeholder="Enter your bid" />
-          <button id="placeBidBtn">Place Bid</button>
-
+        <!-- highest bid -->
+        <section
+          class="mx-auto flex flex-col w-[95%] md:w-5xl mb-4 bg-gray-300"
+        >
+          <p>
+            <strong>Highest bid:</strong>
+            <span id="currentBid">No bids yet</span>
+          </p>
           <hr />
-          <p id="bidMessage"></p>
-        </div>
+        </section>
 
-        <h3>Bid History</h3>
-        <ul id="bidHistory"></ul>
+        <!-- place your bid -->
+        <section class="mx-auto flex flex-col w-[95%] md:w-5xl bg-gray-300">
+          <div class="bid-section">
+            <p>Enter your bid</p>
+            <input
+              class="h-8"
+              type="number"
+              id="bidAmount"
+              placeholder="Enter your bid"
+            />
+            <button
+              id="placeBidBtn"
+              class="md:ml-10 border-2 rounded-sm p-0.5 cursor-pointer bg-green-300"
+            >
+              Place Bid
+            </button>
+
+            <p id="bidMessage"></p>
+          </div>
+        </section>
+        <hr class="mt-5" />
+
+        <!-- all bids in an item -->
+        <section>
+          <h3>Bid History</h3>
+          <ul id="bidHistory"></ul>
+        </section>
       </main>
 
       <footer>
