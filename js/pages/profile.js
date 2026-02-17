@@ -2,7 +2,11 @@
 
 'use strict';
 
-import { getProfile, updateProfile } from '../api/profileApi.js';
+import {
+  getProfile,
+  updateProfile,
+  getProfileWins,
+} from '../api/profileApi.js';
 
 const credits = document.querySelector('#credits');
 const avatar = document.querySelector('#avatar');
@@ -14,6 +18,7 @@ const userListingsContainer = document.querySelector('#userListings');
 const bidsNr = document.querySelector('#bidsNr');
 const userBidsContainer = document.querySelector('#userBids');
 const winsNr = document.querySelector('#winsNr');
+const userWinsContainer = document.querySelector('#userWins');
 const profileFormError = document.querySelector('#profileFormError');
 const profileText = document.querySelector('#profileText');
 
@@ -29,13 +34,13 @@ async function loadProfile() {
 
     // avatar
     avatar.innerHTML = `
-    <img src="${profile.avatar?.url || 'images\bailey-zindel-NRQV-hBF10M-unsplash.jpg'}"
+    <img src="${profile.avatar?.url || 'images/bailey-zindel-NRQV-hBF10M-unsplash.jpg'}"
     alt="${profile.avatar?.alt || ''}" />
     `;
 
     // banner
     banner.innerHTML = `
-    <img src="${profile.banner?.url || 'images\andrei-castanha-raGhqxN-0A0-unsplash.jpg'}"
+    <img src="${profile.banner?.url || 'images/andrei-castanha-raGhqxN-0A0-unsplash.jpg'}"
     alt="${profile.banner?.alt || ''}" />
     `;
 
@@ -46,7 +51,6 @@ async function loadProfile() {
 
     listingsNr.textContent = profile._count?.listings || 0;
     bidsNr.textContent = profile._count?.bids || 0;
-    winsNr.textContent = profile._count?.wins || 0;
 
     // =====================
     // render user listings
@@ -146,3 +150,42 @@ profileForm.addEventListener('submit', async (event) => {
 
 // reload updated data
 loadProfile();
+
+// ===============
+// load user wins
+// ===============
+async function loadWins() {
+  try {
+    const name = localStorage.getItem('name');
+
+    const wins = await getProfileWins(name);
+
+    userWinsContainer.innerHTML = '';
+
+    if (wins.length) {
+      wins.forEach((win) => {
+        const card = document.createElement('div');
+
+        card.className = 'border p-2';
+
+        card.innerHTML = `
+              <a href="listing.html?id=${win.listing?.id}"
+              class="block cursor-pointer">
+              <h5>${win.listing?.title || 'Listing'}</h5>
+              <p>Winning bid: ${win.amount}</p>
+              </a>
+            `;
+
+        userWinsContainer.appendChild(card);
+      });
+
+      winsNr.textContent = wins.length;
+    } else {
+      userWinsContainer.textContent = 'No wins yet.';
+      winsNr.textContent = 0;
+    }
+  } catch (error) {
+    console.error('Failed to load wins:', error.message);
+  }
+}
+loadWins();

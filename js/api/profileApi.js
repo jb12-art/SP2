@@ -5,7 +5,7 @@
 import { API_BASE, API_KEY } from './config.js';
 
 // ============
-// get profile
+// get single profile
 // ============
 export async function getProfile() {
   const token = localStorage.getItem('token');
@@ -16,7 +16,7 @@ export async function getProfile() {
   }
 
   const response = await fetch(
-    `${API_BASE}/auction/profiles/${name}?_listings=true&_wins=true&_bids=true`,
+    `${API_BASE}/auction/profiles/${name}?_listings=true&_bids=true`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -55,6 +55,110 @@ export async function updateProfile(updates) {
 
   if (!response.ok) {
     throw new Error(data.errors?.[0]?.message || 'Failed to update profile');
+  }
+
+  return data.data;
+}
+
+// =================
+// get all profiles
+// =================
+export async function getAllProfiles() {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    throw new Error('Not logged in');
+  }
+
+  const response = await fetch(`${API_BASE}/auction/profiles`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'X-Noroff-API-Key': API_KEY,
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.errors?.[0]?.message || 'Failed to load profiles');
+  }
+
+  return data.data;
+}
+
+// ============================
+// get all listings by profile
+// ============================
+export async function getProfileListings(name) {
+  const token = localStorage.getItem('token');
+
+  const response = await fetch(
+    `${API_BASE}/auction/profiles/${name}/listings`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'X-Noroff-API-Key': API_KEY,
+      },
+    },
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data.errors?.[0]?.message || 'Failed to load profile listings',
+    );
+  }
+
+  return data.data;
+}
+
+// ========================
+// get all bids by profile
+// ========================
+export async function getProfileBids(name) {
+  const token = localStorage.getItem('token');
+
+  const response = await fetch(
+    `${API_BASE}/auction/profiles/${name}/bids?_listings=true`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'X-Noroff-API-Key': API_KEY,
+      },
+    },
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.errors?.[0]?.message || 'Failed to load profile bids');
+  }
+
+  return data.data;
+}
+
+// ========================
+// get all wins by profile
+// ========================
+export async function getProfileWins(name) {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    throw new Error('Not logged in');
+  }
+
+  const response = await fetch(`${API_BASE}/auction/profiles/${name}/wins`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'X-Noroff-API-Key': API_KEY,
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.errors?.[0]?.message || 'Filed to load profile wins');
   }
 
   return data.data;

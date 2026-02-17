@@ -49,42 +49,45 @@
             class="md:max-h-[900px] object-contain"
             alt="Listing image"
           />
+          <hr />
 
-          <h3 id="listingTitle" class="bg-gray-300"></h3>
-          <hr class="mb-2" />
+          <h3 id="listingTitle" class="pl-1 bg-gray-300"></h3>
+          <hr />
 
-          <div id="listingDescription" class="bg-gray-300"></div>
-          <hr class="mb-2" />
+          <div id="listingDescription" class="pl-1 bg-gray-300"></div>
+          <hr />
 
-          <p class="bg-gray-300">
-            <strong>Seller:</strong> <span id="listingSeller"></span>
+          <p class="pl-1 bg-gray-300">
+            <strong>Seller:</strong>
+            <span id="listingSeller"></span>
           </p>
         </section>
 
         <!-- highest bid -->
         <section
-          class="mx-auto flex flex-col w-[95%] md:w-5xl mb-4 bg-gray-300"
+          class="mx-auto flex flex-col w-[95%] md:w-5xl border-2 bg-gray-300"
         >
-          <p>
+          <p class="ml-1">
             <strong>Highest bid:</strong>
             <span id="currentBid">No bids yet</span>
           </p>
-          <hr />
         </section>
 
         <!-- place your bid -->
-        <section class="mx-auto flex flex-col w-[95%] md:w-5xl bg-gray-300">
+        <section
+          class="mx-auto flex flex-col w-[95%] md:w-5xl border-2 pt-2 bg-gray-300"
+        >
           <div class="bid-section">
-            <p>Enter your bid</p>
+            <p class="ml-1">Enter your bid</p>
             <input
-              class="h-8"
+              class="border-2 h-8 ml-1"
               type="number"
               id="bidAmount"
               placeholder="Enter your bid"
             />
             <button
               id="placeBidBtn"
-              class="md:ml-10 border-2 rounded-sm p-0.5 cursor-pointer bg-green-300"
+              class="md:ml-10 border-2 rounded-sm p-0.5 cursor-pointer ml-1 mb-1 bg-green-300"
             >
               Place Bid
             </button>
