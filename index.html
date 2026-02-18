@@ -90,6 +90,31 @@
           />
         </form>
 
+        <!-- filter -->
+        <div class="flex justify-center gap-2 mt-2">
+          <!-- newest -->
+          <button
+            id="filterNewest"
+            class="border rounded-sm p-1 cursor-pointer hover:bg-gray-200"
+          >
+            Newest item
+          </button>
+        </div>
+
+        <!-- tag filter -->
+        <div class="flex justify-center mt-3 gap-2">
+          <select
+            id="tagFilter"
+            class="cursor-pointer border rounded-sm p-1 hover:bg-gray-200"
+          >
+            <option value="">All categories</option>
+            <option value="tech">Tech</option>
+            <option value="furniture">Furniture</option>
+            <option value="animal">Animal</option>
+            <option value="nature">Nature</option>
+          </select>
+        </div>
+
         <!-- Auction House item listings -->
         <div id="saleItems"></div>
       </main>

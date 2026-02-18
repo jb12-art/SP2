@@ -89,18 +89,28 @@ async function refreshBids() {
 
 async function loadListing() {
   try {
-    const listing = await getListingDetails(listingId);
+    const listing = await getListingWithBids(listingId);
 
     image.src = listing.media?.[0]?.url || 'https://placehold.co/600x400';
     image.alt = listing.title;
+
     title.textContent = listing.title;
-    description.textContent = listing.description;
+    description.textContent = listing.description || 'No description provided';
     seller.textContent = listing.seller?.name || 'Seller is anonymous';
+
+    const bids = listing.bids || [];
+
+    renderBids(bids);
+
+    if (bids.length > 0) {
+      const highestBid = Math.max(...bids.map((b) => b.amount));
+      currentPrice = highestBid;
+      highestBidElement.textContent = `${highestBid} credits`;
+    }
   } catch (error) {
     console.error(error.message);
   }
 }
 
 loadListing();
-refreshBids();
-setInterval(refreshBids, 5000);
+setInterval(refreshBids, 1000);
