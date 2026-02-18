@@ -3,6 +3,17 @@
 
 'use strict';
 
+// ================
+// page protection
+// ================
+const protectedPages = ['profile.html'];
+const currentPage = window.location.pathname.split('/').pop();
+
+if (protectedPages.includes(currentPage) && !token) {
+  window.localStorage.href = 'login.html';
+}
+//
+
 const token = localStorage.getItem('token');
 const email = localStorage.getItem('email');
 const avatarUrl = localStorage.getItem('avatar');
@@ -39,7 +50,8 @@ if (token && email) {
 
   // logout button
   if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
+    logoutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       localStorage.clear();
       window.location.href = 'index.html';
     });

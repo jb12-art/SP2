@@ -8,6 +8,11 @@ import {
   getProfileWins,
 } from '../api/profileApi.js';
 
+const token = localStorage.getItem('token');
+if (!token) {
+  window.location.href = 'login.html';
+}
+
 const credits = document.querySelector('#credits');
 const avatar = document.querySelector('#avatar');
 const banner = document.querySelector('#bannerImg');

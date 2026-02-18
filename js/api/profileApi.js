@@ -158,7 +158,7 @@ export async function getProfileWins(name) {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.errors?.[0]?.message || 'Filed to load profile wins');
+    throw new Error(data.errors?.[0]?.message || 'Failed to load profile wins');
   }
 
   return data.data;

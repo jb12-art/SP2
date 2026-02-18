@@ -34,6 +34,12 @@ const seller = document.querySelector('#listingSeller');
 
 // bid button click event
 bidBtn.addEventListener('click', async () => {
+  // bid login guard
+  if (!token) {
+    bidMessage.textContent = 'You must be logged in to place a bid.';
+    return;
+  }
+
   const bidValue = Number(bidInput.value);
 
   bidMessage.textContent = '';
@@ -113,4 +119,4 @@ async function loadListing() {
 }
 
 loadListing();
-setInterval(refreshBids, 1000);
+setInterval(refreshBids, 5000);
