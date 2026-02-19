@@ -6,6 +6,7 @@ import {
   getProfile,
   updateProfile,
   getProfileWins,
+  getProfileBids,
 } from '../api/profileApi.js';
 
 const token = localStorage.getItem('token');
@@ -82,35 +83,47 @@ async function loadProfile() {
       userListingsContainer.textContent = 'No listings yet.';
     }
 
-    // =================
-    // render user bids
-    // =================
-    userBidsContainer.innerHTML = '';
-
-    if (profile.bids?.length) {
-      profile.bids.forEach((bid) => {
-        const card = document.createElement('div');
-
-        card.className = 'border p-2';
-
-        card.innerHTML = `
-        <a href="listing.html?id=${bid.listing?.id}" class="block cursor-pointer">
-        <h5>${bid.listing?.title || 'Listing'}</h5>
-        <p>Your bid: ${bid.amount}</p>
-        </a>
-        `;
-
-        userBidsContainer.appendChild(card);
-      });
-    } else {
-      userBidsContainer.textContent = 'No bids yet.';
-    }
-
     // store for reuse on index.html
     localStorage.setItem('credits', profile.credits);
     localStorage.setItem('avatar', profile.avatar?.url || '');
   } catch (error) {
     console.error(error.message);
+  }
+}
+
+// =================
+// render user bids
+// =================
+async function loadUserBids() {
+  try {
+    const name = localStorage.getItem('name');
+    const bids = await getProfileBids(name);
+
+    userBidsContainer.innerHTML = '';
+
+    if (!bids.length) {
+      userBidsContainer.textContent = 'No bids yet.';
+      bidsNr.textContent = 0;
+      return;
+    }
+
+    bids.forEach((bid) => {
+      const card = document.createElement('div');
+      card.className = 'border p-2';
+
+      card.innerHTML = `
+    <a href="listing.html?id=${bid.listing.id}" class="block cursor-pointer">
+    <h5>${bid.listing.title}</h5>
+    <p>Your bid: ${bid.amount}</p>
+    </a>
+    `;
+
+      userBidsContainer.appendChild(card);
+    });
+
+    bidsNr.textContent = bids.length;
+  } catch (error) {
+    console.error('Failed to load bids:', error.message);
   }
 }
 
@@ -144,6 +157,7 @@ profileForm.addEventListener('submit', async (event) => {
 
   try {
     await updateProfile(updates);
+    localStorage.setItem('avatar', avatarUrl || '');
 
     loadProfile(); // refresh data
     profileForm.reset();
@@ -193,4 +207,7 @@ async function loadWins() {
     console.error('Failed to load wins:', error.message);
   }
 }
+
+loadProfile();
+loadUserBids();
 loadWins();

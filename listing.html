@@ -44,11 +44,11 @@
 
         <!-- auction item -->
         <section class="mx-auto flex flex-col w-[95%] md:w-5xl mb-4 border-2">
-          <img
-            id="listingImage"
-            class="md:max-h-[900px] object-contain"
-            alt="Listing image"
-          />
+          <div id="listingGallary" class="flex flex-col gap-2">
+            <img id="mainImage" class="object-contain" />
+            <hr />
+            <div id="thumbnailRow" class="flex gap-2"></div>
+          </div>
           <hr />
 
           <h3 id="listingTitle" class="pl-1 bg-gray-300"></h3>
@@ -61,7 +61,17 @@
             <strong>Seller:</strong>
             <span id="listingSeller"></span>
           </p>
+
+          <!-- edit -->
+          <button id="editListingBtn" class="hidden border p-1">
+            Edit listing
+          </button>
         </section>
+
+        <!-- delete listing -->
+        <button id="deleteListingBtn" class="hidden border p-1 bg-red-300">
+          Delete listing
+        </button>
 
         <!-- highest bid -->
         <section
@@ -97,7 +107,7 @@
         </section>
         <hr class="mt-5" />
 
-        <!-- all bids in an item -->
+        <!-- all bids on an item -->
         <section
           class="mx-auto flex flex-col w-[95%] md:w-5xl border-2 pt-2 pl-1 pb-1 mt-5 mb-5"
         >

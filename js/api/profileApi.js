@@ -16,7 +16,7 @@ export async function getProfile() {
   }
 
   const response = await fetch(
-    `${API_BASE}/auction/profiles/${name}?_listings=true&_bids=true`,
+    `${API_BASE}/auction/profiles/${name}?_listings=true&_bids=true&_count=true`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -162,4 +162,19 @@ export async function getProfileWins(name) {
   }
 
   return data.data;
+}
+
+// =====================
+// refresh user credits
+// =====================
+export async function refreshCredits() {
+  const profile = await getProfile();
+
+  // store latest credits globally
+  localStorage.setItem('credits', profile.credits);
+
+  // notify UI that credits changed
+  window.dispatchEvent(new Event('creditsUpdated'));
+
+  return profile.credits;
 }

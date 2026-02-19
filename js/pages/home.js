@@ -93,10 +93,6 @@ function renderListings(listings) {
     <hr/>
     <h3>${item.title}</h3>
     <hr/>
-    <p>${item.description || ' No description provided'}</p>
-    <hr/>
-    
-    <hr/>
     <p><strong>Ends:</strong> ${new Date(item.endsAt).toLocaleDateString()}</p>
     </a>
     `;

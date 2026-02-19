@@ -9,12 +9,12 @@
 const protectedPages = ['profile.html'];
 const currentPage = window.location.pathname.split('/').pop();
 
+const token = localStorage.getItem('token');
+
 if (protectedPages.includes(currentPage) && !token) {
   window.localStorage.href = 'login.html';
 }
-//
 
-const token = localStorage.getItem('token');
 const email = localStorage.getItem('email');
 const avatarUrl = localStorage.getItem('avatar');
 const credits = localStorage.getItem('credits');
@@ -44,9 +44,18 @@ if (token && email) {
   }
 
   // credit
-  if (creditContainer) {
-    creditContainer.textContent = `Credits: ${credits || 0}`;
+  function renderCredits() {
+    const credits = localStorage.getItem('credits');
+
+    if (creditContainer) {
+      creditContainer.textContent = `Credits: ${credits || 0}`;
+    }
   }
+
+  // initial render
+  renderCredits();
+  // listen for updates from anywhere
+  window.addEventListener('creditsUpdates', renderCredits);
 
   // logout button
   if (logoutBtn) {

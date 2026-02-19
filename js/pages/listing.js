@@ -6,6 +6,8 @@ import {
   getListingWithBids,
 } from '../api/listingDetailsApi.js';
 import { placeBid } from '../api/bids.js';
+import { refreshCredits } from '../api/profileApi.js';
+import { deleteListing } from '../api/listingsApi.js';
 
 // Get id from URL
 const params = new URLSearchParams(window.location.search);
@@ -27,10 +29,15 @@ const highestBidElement = document.querySelector('#currentBid');
 
 let currentPrice = 0;
 
-const image = document.querySelector('#listingImage');
+const mainImage = document.querySelector('#mainImage');
+const thumbnailRow = document.querySelector('#thumbnailRow');
 const title = document.querySelector('#listingTitle');
 const description = document.querySelector('#listingDescription');
 const seller = document.querySelector('#listingSeller');
+const editBtn = document.querySelector('#editListingBtn');
+const deleteBtn = document.querySelector('#deleteListingBtn');
+
+const username = localStorage.getItem('username');
 
 // bid button click event
 bidBtn.addEventListener('click', async () => {
@@ -51,6 +58,9 @@ bidBtn.addEventListener('click', async () => {
 
   try {
     await placeBid(listingId, bidValue, token);
+
+    // refresh credits
+    await refreshCredits();
 
     bidMessage.textContent = 'Bid placed!';
     currentPrice = bidValue;
@@ -97,13 +107,53 @@ async function loadListing() {
   try {
     const listing = await getListingWithBids(listingId);
 
-    image.src = listing.media?.[0]?.url || 'https://placehold.co/600x400';
-    image.alt = listing.title;
+    // main listing info
+    mainImage.src = listing.media?.[0]?.url || 'https://placehold.co/600x400';
+    mainImage.alt = listing.title;
 
     title.textContent = listing.title;
     description.textContent = listing.description || 'No description provided';
     seller.textContent = listing.seller?.name || 'Seller is anonymous';
 
+    // if owner show edit button
+    if (listing.seller?.name === username) {
+      editBtn.classList.remove('hidden');
+      // if owner show delete button
+      deleteBtn.classList.remove('hidden');
+    }
+
+    deleteBtn.addEventListener('click', async () => {
+      if (!confirm('Delete this listing?')) return;
+
+      try {
+        await deleteListing(listingId, token);
+        window.location.href = 'index.html';
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+
+    // media gallery
+    const media = listing.media || [];
+
+    mainImage.src = media[0]?.url || 'https://placehold.co/600x400';
+    mainImage.alt = listing.title;
+
+    thumbnailRow.innerHTML = '';
+
+    media.forEach((img) => {
+      const thumb = document.createElement('img');
+      thumb.src = img.url;
+      thumb.classList.add('w-20', 'cursor-pointer');
+
+      thumb.addEventListener('click', () => {
+        mainImage.src = img.url;
+      });
+
+      thumbnailRow.appendChild(thumb);
+    });
+
+    // bids
     const bids = listing.bids || [];
 
     renderBids(bids);
