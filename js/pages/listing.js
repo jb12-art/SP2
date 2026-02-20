@@ -1,10 +1,7 @@
 // js/pages/listing.js
 'use strict';
 
-import {
-  getListingDetails,
-  getListingWithBids,
-} from '../api/listingDetailsApi.js';
+import { getListingWithBids } from '../api/listingDetailsApi.js';
 import { placeBid } from '../api/bids.js';
 import { refreshCredits } from '../api/profileApi.js';
 import { deleteListing } from '../api/listingsApi.js';
@@ -34,6 +31,7 @@ const thumbnailRow = document.querySelector('#thumbnailRow');
 const title = document.querySelector('#listingTitle');
 const description = document.querySelector('#listingDescription');
 const seller = document.querySelector('#listingSeller');
+const endsAt = document.querySelector('#endsAt');
 const editBtn = document.querySelector('#editListingBtn');
 const deleteBtn = document.querySelector('#deleteListingBtn');
 
@@ -114,6 +112,7 @@ async function loadListing() {
     title.textContent = listing.title;
     description.textContent = listing.description || 'No description provided';
     seller.textContent = listing.seller?.name || 'Seller is anonymous';
+    endsAt.textContent = new Date(listing.endsAt).toLocaleDateString();
 
     // if owner show edit button
     if (listing.seller?.name === username) {

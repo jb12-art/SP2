@@ -3,6 +3,7 @@
 'use strict';
 
 import { API_BASE } from '../api/config.js';
+import { createListingcard } from '../ui/createListingCard.js';
 
 // searchBar input
 const searchInput = document.querySelector('#searchItem');
@@ -40,7 +41,7 @@ searchInput.addEventListener('input', (event) => {
 // function saleItems
 async function fetchListings() {
   try {
-    const response = await fetch(`${API_BASE}/auction/listings`);
+    const response = await fetch(`${API_BASE}/auction/listings?_seller=true`);
 
     const data = await response.json();
 
@@ -59,7 +60,7 @@ async function fetchListings() {
 async function fetchListingsByTag(tag) {
   try {
     const response = await fetch(
-      `${API_BASE}/auction/listings?_tag=${encodeURIComponent(tag)}&_active=true`,
+      `${API_BASE}/auction/listings?_tag=${encodeURIComponent(tag)}&_active=true&_seller=true`,
     );
 
     const data = await response.json();
@@ -80,23 +81,7 @@ function renderListings(listings) {
   saleItemsContainer.innerHTML = '';
 
   listings.forEach((item) => {
-    const card = document.createElement('div');
-    card.classList.add('listing-card');
-
-    card.innerHTML = `
-    <a href="listing.html?id=${item.id}" class="block">
-    <img
-    src="${item.media?.[0]?.url || 'https://placehold.co/600x400'}"
-    alt="${item.title}"
-    onerror="this.onerror=null; this.src='https://placehold.co/600x400';"
-    />
-    <hr/>
-    <h3>${item.title}</h3>
-    <hr/>
-    <p><strong>Ends:</strong> ${new Date(item.endsAt).toLocaleDateString()}</p>
-    </a>
-    `;
-
+    const card = createListingcard(item);
     saleItemsContainer.appendChild(card);
   });
 }

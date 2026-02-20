@@ -8,6 +8,8 @@ import {
   getProfileWins,
   getProfileBids,
 } from '../api/profileApi.js';
+import { createListingcard } from '../ui/createListingCard.js';
+import { createListing } from '../api/listingsApi.js';
 
 const token = localStorage.getItem('token');
 if (!token) {
@@ -27,6 +29,15 @@ const winsNr = document.querySelector('#winsNr');
 const userWinsContainer = document.querySelector('#userWins');
 const profileFormError = document.querySelector('#profileFormError');
 const profileText = document.querySelector('#profileText');
+const createListingBtn = document.querySelector('#createListing');
+const createForm = document.querySelector('#createListingForm');
+
+// ===============
+// create listing
+// ===============
+createListingBtn.addEventListener('click', () => {
+  createForm.classList.toggle('hidden');
+});
 
 // =============
 // load profile
@@ -65,18 +76,7 @@ async function loadProfile() {
 
     if (profile.listings?.length) {
       profile.listings.forEach((listing) => {
-        const card = document.createElement('div');
-
-        card.className = 'border p-2';
-
-        card.innerHTML = `
-        <a href="listing.html?id=${listing.id}" class="block cursor-pointer">
-        <h5>${listing.title}</h5>
-        <p>${listing.description || ''}</p>
-        <p>Bids: ${listing._count?.bids || 0}</p>
-        </a>
-        `;
-
+        const card = createListingcard(listing);
         userListingsContainer.appendChild(card);
       });
     } else {
@@ -207,6 +207,87 @@ async function loadWins() {
     console.error('Failed to load wins:', error.message);
   }
 }
+
+// ======================
+// create listing submit
+// ======================
+const submitListingBtn = document.querySelector('#submitListingBtn');
+const createMessage = document.querySelector('#createListingMessage');
+
+submitListingBtn.addEventListener('click', async () => {
+  try {
+    // const images = document
+    //   .querySelector('#listingImageInput')
+    //   .value.split(',')
+    //   .map((url) => ({ url: url.trim() }));
+
+    const rawImages = document
+      .querySelector('#listingImageInput')
+      .value.split(',');
+
+    // clean + validate image URLs
+    const images = rawImages
+      .map((url) => url.trim())
+      .filter((url) => url.length > 0)
+      .map((url) => {
+        try {
+          // remove tracking query params
+          const cleanUrl = new URL(url);
+          cleanUrl.search = '';
+
+          return cleanUrl.toString();
+        } catch {
+          return null;
+        }
+      })
+      .filter((url) => url && url.length <= 300)
+      .map((url) => ({ url }));
+
+    if (rawImages.length && images.length === 0) {
+      createMessage.textContent =
+        'Invalid image URL. Use a direct image link under 300 characters.';
+      return;
+    }
+
+    // title
+    const title = document.querySelector('#listingTitleInput').value.trim();
+
+    const description = document
+      .querySelector('#listingDescriptionInput')
+      .value.trim();
+
+    const endsAt = document.querySelector('#listingEndDateInput').value;
+
+    const tags = document
+      .querySelector('#listingTagsInput')
+      .value.split(',')
+      .map((tag) => tag.trim());
+
+    if (!title || !endsAt) {
+      createMessage.textContent = 'Title and end date required';
+      return;
+    }
+
+    const listingData = {
+      media: images,
+      title,
+      description,
+      endsAt: new Date(endsAt).toISOString(),
+      tags,
+    };
+
+    await createListing(listingData, token);
+
+    createMessage.textContent = 'Listing created';
+
+    // reload profile so listing appears
+    loadProfile();
+
+    createForm.classList.add('hidden');
+  } catch (error) {
+    createMessage.textContent = error.message;
+  }
+});
 
 loadProfile();
 loadUserBids();

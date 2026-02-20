@@ -55,3 +55,24 @@ export async function deleteListing(id, token) {
     throw new Error('Failed to delete listing');
   }
 }
+
+// create listing
+export async function createListing(listingData, token) {
+  const response = await fetch(`${API_BASE}/auction/listings`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+      'X-Noroff-API-Key': API_KEY,
+    },
+    body: JSON.stringify(listingData),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.errors?.[0]?.message || 'Failed to create listing');
+  }
+
+  return data.data;
+}

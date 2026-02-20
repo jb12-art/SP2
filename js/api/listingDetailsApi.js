@@ -27,7 +27,7 @@ export async function getListingDetails(id) {
 // get listing with bids refresh
 export async function getListingWithBids(id) {
   const response = await fetch(
-    `${API_BASE}/auction/listings/${id}?_bids=true`,
+    `${API_BASE}/auction/listings/${id}?_bids=true&_seller=true`,
     {
       headers: {
         'X-Noroff-API-Key': API_KEY,

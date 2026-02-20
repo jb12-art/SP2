@@ -48,11 +48,53 @@
         <!-- banner -->
         <div class="h-24 mb-2" id="bannerImg"></div>
 
-        <!-- create a listing -->
+        <!-- create a listing button -->
         <div class="grid grid-cols-6 m-2 md:grid-cols-10">
-          <button id="createListing" class="md:col-start-2">
+          <button id="createListing" class="md:col-start-2 cursor-pointer">
             Create a listing
           </button>
+        </div>
+
+        <!-- crate listing form -->
+        <div
+          id="createListingForm"
+          class="flex flex-col mx-auto w-[95%] mb-14 md:w-5xl hidden border p-1 mt-2"
+        >
+          <h3 class="underline mb-5">Create listing</h3>
+
+          <!-- image input -->
+          <input
+            id="listingImageInput"
+            placeholder="Image URL (comma separated)"
+          />
+
+          <!-- title input -->
+          <input id="listingTitleInput" placeholder="Title" />
+
+          <!-- description input -->
+          <textarea
+            id="listingDescriptionInput"
+            class="border mb-5"
+            placeholder="Description"
+          ></textarea>
+
+          <!-- end date -->
+          <small>End date</small>
+          <input type="datetime-local" id="listingEndDateInput" />
+
+          <!-- tags -->
+          <input id="listingTagsInput" placeholder="Tags (comma separated)" />
+
+          <!-- submit button -->
+          <button
+            id="submitListingBtn"
+            class="border p-1 w-fit bg-green-200 hover:bg-green-300 cursor-pointer"
+          >
+            Create
+          </button>
+
+          <!-- create message -->
+          <p id="createListingMessage"></p>
         </div>
 
         <!-- profile bio text -->
@@ -142,13 +184,13 @@
 
             <!-- bio -->
             <label for="bio text">Bio</label>
-            <input
-              class="h-20"
+            <textarea
+              class="h-20 border mb-4 pl-2"
               id="bioText"
               type="text"
               name="bio"
               placeholder="Add text to your profile"
-            />
+            ></textarea>
 
             <!-- button -->
             <div>
