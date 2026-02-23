@@ -44,7 +44,7 @@
 
         <!-- auction item -->
         <section class="mx-auto flex flex-col w-[95%] md:w-5xl mb-4 border-2">
-          <div id="listingGallary" class="flex flex-col gap-2">
+          <div id="listingGallary" class="flex flex-col gap-2 bg-gray-300">
             <img id="mainImage" class="object-contain" />
             <hr />
             <div id="thumbnailRow" class="flex gap-2"></div>
@@ -70,17 +70,26 @@
           <p class="pl-1 bg-gray-300">
             <strong>Ends:</strong> <span id="endsAt"></span>
           </p>
+          <hr />
 
-          <!-- edit -->
-          <button id="editListingBtn" class="hidden border p-1">
-            Edit listing
-          </button>
+          <div class="flex justify-between bg-gray-300">
+            <!-- edit -->
+            <button
+              id="editListingBtn"
+              class="hidden border p-1 w-fit bg-blue-200 hover:bg-blue-300 cursor-pointer"
+            >
+              Edit listing
+            </button>
+
+            <!-- delete listing -->
+            <button
+              id="deleteListingBtn"
+              class="hidden border p-1 w-fit bg-red-200 hover:bg-red-300 cursor-pointer"
+            >
+              Delete listing
+            </button>
+          </div>
         </section>
-
-        <!-- delete listing -->
-        <button id="deleteListingBtn" class="hidden border p-1 bg-red-300">
-          Delete listing
-        </button>
 
         <!-- highest bid -->
         <section

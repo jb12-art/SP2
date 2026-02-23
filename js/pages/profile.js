@@ -216,11 +216,6 @@ const createMessage = document.querySelector('#createListingMessage');
 
 submitListingBtn.addEventListener('click', async () => {
   try {
-    // const images = document
-    //   .querySelector('#listingImageInput')
-    //   .value.split(',')
-    //   .map((url) => ({ url: url.trim() }));
-
     const rawImages = document
       .querySelector('#listingImageInput')
       .value.split(',');

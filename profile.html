@@ -140,21 +140,21 @@
         <!-- user listings in profile -->
         <section class="mx-auto w-[95%] mb-14 md:w-5xl">
           <h4>Your Listings</h4>
-          <div id="userListings" class="grid gap-4"></div>
+          <div id="userListings" class="grid grid-cols-2 gap-4"></div>
         </section>
         <hr class="mx-auto w-[95%] md:w-5xl" />
 
         <!-- user bids in profile -->
         <section class="mx-auto w-[95%] mb-14 md:w-5xl">
           <h4>Your Bids</h4>
-          <div id="userBids" class="grid gap-4"></div>
+          <div id="userBids" class="grid grid-cols-2 gap-4"></div>
         </section>
         <hr class="mx-auto w-[95%] md:w-5xl" />
 
         <!-- user wins in profile -->
         <section class="mx-auto w-[95%] mb-14 md:w-5xl">
           <h4>Your Wins</h4>
-          <div id="userWins" class="grid gap-4"></div>
+          <div id="userWins" class="grid grid-cols-2 gap-4"></div>
         </section>
         <hr class="mx-auto w-[95%] md:w-5xl mb-14" />
 
@@ -164,7 +164,10 @@
             class="block mx-auto w-fit bg-red-400"
             id="profileFormError"
           ></small>
+
           <form id="profileForm" class="mx-auto flex flex-col w-[95%] md:w-5xl">
+            <h4 class="mb-2">Edit your profile</h4>
+
             <!-- avatar -->
             <label for="avatar Url">Avatar</label>
             <input

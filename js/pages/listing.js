@@ -35,7 +35,7 @@ const endsAt = document.querySelector('#endsAt');
 const editBtn = document.querySelector('#editListingBtn');
 const deleteBtn = document.querySelector('#deleteListingBtn');
 
-const username = localStorage.getItem('username');
+const name = localStorage.getItem('name');
 
 // bid button click event
 bidBtn.addEventListener('click', async () => {
@@ -115,12 +115,13 @@ async function loadListing() {
     endsAt.textContent = new Date(listing.endsAt).toLocaleDateString();
 
     // if owner show edit button
-    if (listing.seller?.name === username) {
+    if (listing.seller?.name === name) {
       editBtn.classList.remove('hidden');
       // if owner show delete button
       deleteBtn.classList.remove('hidden');
     }
 
+    // delete button
     deleteBtn.addEventListener('click', async () => {
       if (!confirm('Delete this listing?')) return;
 
