@@ -76,6 +76,10 @@ async function loadProfile() {
 
     if (profile.listings?.length) {
       profile.listings.forEach((listing) => {
+        // inject seller name
+        listing.seller = {
+          name: profile.name,
+        };
         const card = createListingcard(listing);
         userListingsContainer.appendChild(card);
       });

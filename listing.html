@@ -52,11 +52,11 @@
           <hr />
 
           <!-- title -->
-          <h3 id="listingTitle" class="pl-1 bg-gray-300"></h3>
+          <h3 id="listingTitle" class="pl-1 bg-gray-300 break-all"></h3>
           <hr />
 
           <!-- description -->
-          <div id="listingDescription" class="pl-1 bg-gray-300"></div>
+          <div id="listingDescription" class="pl-1 bg-gray-300 break-all"></div>
           <hr />
 
           <!-- seller -->
@@ -89,6 +89,35 @@
               Delete listing
             </button>
           </div>
+        </section>
+
+        <!-- EDIT LISTING FORM -->
+        <section
+          id="editForm"
+          class="hidden mx-auto flex flex-col w-[95%] md:w-5xl border p-2 mb-4"
+        >
+          <h3>Edit Listing</h3>
+          <!-- edit title -->
+          <input id="editTitle" placeholder="Title" />
+          <!-- edit description -->
+          <textarea
+            id="editDescription"
+            class="border mb-4"
+            placeholder="Description"
+          ></textarea>
+          <!-- edit image -->
+          <input id="editImages" placeholder="Image URLs (comma separated)" />
+          <!-- edit tags -->
+          <input id="listingTagsInput" placeholder="Tags (comma separated)" />
+
+          <button
+            id="saveEditBtn"
+            class="bg-blue-200 hover:bg-blue-300 cursor-pointer p-1 mt-2"
+          >
+            Save changes
+          </button>
+
+          <p id="editMessage"></p>
         </section>
 
         <!-- highest bid -->

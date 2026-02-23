@@ -360,6 +360,9 @@
   .bg-blue-200 {
     background-color: var(--color-blue-200);
   }
+  .bg-blue-300 {
+    background-color: var(--color-blue-300);
+  }
   .bg-gray-50 {
     background-color: var(--color-gray-50);
   }
@@ -419,6 +422,16 @@
   }
   .text-center {
     text-align: center;
+  }
+  .break-normal {
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .wrap-break-word {
+    overflow-wrap: break-word;
+  }
+  .break-all {
+    word-break: break-all;
   }
   .text-green-600 {
     color: var(--color-green-600);

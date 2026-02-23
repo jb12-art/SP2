@@ -4,7 +4,7 @@
 import { getListingWithBids } from '../api/listingDetailsApi.js';
 import { placeBid } from '../api/bids.js';
 import { refreshCredits } from '../api/profileApi.js';
-import { deleteListing } from '../api/listingsApi.js';
+import { deleteListing, updateListing } from '../api/listingsApi.js';
 
 // Get id from URL
 const params = new URLSearchParams(window.location.search);
@@ -34,6 +34,13 @@ const seller = document.querySelector('#listingSeller');
 const endsAt = document.querySelector('#endsAt');
 const editBtn = document.querySelector('#editListingBtn');
 const deleteBtn = document.querySelector('#deleteListingBtn');
+// edit listing form
+const editForm = document.querySelector('#editForm');
+const editTitleInput = document.querySelector('#editTitle');
+const editDescriptionInput = document.querySelector('#editDescription');
+const editImagesInput = document.querySelector('#editImages');
+const saveEditBtn = document.querySelector('#saveEditBtn');
+const editMessage = document.querySelector('#editMessage');
 
 const name = localStorage.getItem('name');
 
@@ -121,6 +128,18 @@ async function loadListing() {
       deleteBtn.classList.remove('hidden');
     }
 
+    // edit button
+    editBtn.addEventListener('click', () => {
+      editForm.classList.remove('hidden');
+
+      // prefill current values
+      editTitleInput.value = listing.title;
+      editDescriptionInput.value = listing.description || '';
+      editImagesInput.value = (listing.media || [])
+        .map((img) => img.url)
+        .join(',');
+    });
+
     // delete button
     deleteBtn.addEventListener('click', async () => {
       if (!confirm('Delete this listing?')) return;
@@ -167,6 +186,44 @@ async function loadListing() {
     console.error(error.message);
   }
 }
+
+// ==================
+// save edit listing
+// ==================
+saveEditBtn.addEventListener('click', async () => {
+  try {
+    const updatedTitle = editTitleInput.value.trim();
+    const updatedDescription = editDescriptionInput.value.trim();
+
+    const media = editImagesInput.value
+      .split(',')
+      .map((url) => url.trim())
+      .filter((url) => url.length)
+      .map((url) => ({ url }));
+
+    if (!updatedTitle) {
+      editMessage.textContent = 'Title is required';
+      return;
+    }
+
+    const updateData = {
+      title: updatedTitle,
+      description: updatedDescription,
+      media,
+    };
+
+    await updateListing(listingId, updateData, token);
+
+    editMessage.textContent = 'Listing updated';
+
+    editForm.classList.add('hidden');
+
+    // reload listing with new data
+    loadListing();
+  } catch (error) {
+    editMessage.textContent = error.message;
+  }
+});
 
 loadListing();
 setInterval(refreshBids, 5000);

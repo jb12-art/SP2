@@ -16,7 +16,7 @@ export async function getProfile() {
   }
 
   const response = await fetch(
-    `${API_BASE}/auction/profiles/${name}?_listings=true&_bids=true&_count=true`,
+    `${API_BASE}/auction/profiles/${name}?_listings=true&_bids=true&_count=true&_seller=true`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
