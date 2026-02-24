@@ -67,7 +67,6 @@ async function loadProfile() {
     userEmail.textContent = profile.email;
 
     listingsNr.textContent = profile._count?.listings || 0;
-    bidsNr.textContent = profile._count?.bids || 0;
 
     // =====================
     // render user listings
