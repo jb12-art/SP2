@@ -24,7 +24,9 @@ const userContent = document.querySelector('#userContent');
 const avatarContainer = document.querySelector('#avatar');
 const creditContainer = document.querySelector('#credits');
 const logoutBtn = document.querySelector('#logoutBtn');
+const createListingLink = document.querySelector('#createListing');
 
+// logged in block
 if (token && email) {
   // Logged in
   if (guestContent) {
@@ -33,6 +35,11 @@ if (token && email) {
 
   if (userContent) {
     userContent.classList.remove('hidden');
+  }
+
+  // show 'create listing <a> tag' in index.html when logged in
+  if (createListingLink) {
+    createListingLink.classList.remove('hidden');
   }
 
   // avatar
@@ -55,7 +62,7 @@ if (token && email) {
   // initial render
   renderCredits();
   // listen for updates from anywhere
-  window.addEventListener('creditsUpdates', renderCredits);
+  window.addEventListener('creditsUpdated', renderCredits);
 
   // logout button
   if (logoutBtn) {
@@ -66,12 +73,17 @@ if (token && email) {
     });
   }
 } else {
-  // Logget out
+  // Logget out block
   if (guestContent) {
     guestContent.classList.remove('hidden');
   }
 
   if (userContent) {
     userContent.classList.add('hidden');
+  }
+
+  // hide create listing <a> tag in index.html when logged out
+  if (createListingLink) {
+    createListingLink.classList.add('hidden');
   }
 }
