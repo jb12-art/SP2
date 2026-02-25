@@ -1,4 +1,5 @@
 // js/ui/createListingcard.js
+// shared style with index.html and profile.html
 
 'use strict';
 

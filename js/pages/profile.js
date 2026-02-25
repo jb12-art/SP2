@@ -51,13 +51,13 @@ async function loadProfile() {
 
     // avatar
     avatar.innerHTML = `
-    <img src="${profile.avatar?.url || 'images/bailey-zindel-NRQV-hBF10M-unsplash.jpg'}"
+    <img src="${profile.avatar?.url || ''}"
     alt="${profile.avatar?.alt || ''}" />
     `;
 
     // banner
     banner.innerHTML = `
-    <img src="${profile.banner?.url || 'images/andrei-castanha-raGhqxN-0A0-unsplash.jpg'}"
+    <img src="${profile.banner?.url || ''}"
     alt="${profile.banner?.alt || ''}" />
     `;
 
