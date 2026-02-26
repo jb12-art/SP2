@@ -219,9 +219,11 @@ const createMessage = document.querySelector('#createListingMessage');
 
 submitListingBtn.addEventListener('click', async () => {
   try {
-    const rawImages = document
+    const imageInputValue = document
       .querySelector('#listingImageInput')
-      .value.split(',');
+      .value.trim();
+
+    const rawImages = imageInputValue.split(',');
 
     // clean + validate image URLs
     const images = rawImages
@@ -241,9 +243,8 @@ submitListingBtn.addEventListener('click', async () => {
       .filter((url) => url && url.length <= 300)
       .map((url) => ({ url }));
 
-    if (rawImages.length && images.length === 0) {
-      createMessage.textContent =
-        'Invalid image URL. Use a direct image link under 300 characters.';
+    if (imageInputValue && images.length === 0) {
+      createMessage.textContent = 'Invalid image URL. Use copy image link.';
       return;
     }
 
