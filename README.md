@@ -55,6 +55,7 @@ The application focuses on:
 #### Listings
 
 - Create listings with:
+  - Image
   - Title
   - Description
   - Deadline date
