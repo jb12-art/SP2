@@ -86,7 +86,7 @@ The application focuses on:
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 1. Clone repository: https://github.com/jb12-art/SP2.git
 
