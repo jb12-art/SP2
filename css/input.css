@@ -18,6 +18,20 @@
     min-height: 100%;
   }
 
+  /* accessibility */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .skip-link:focus {
+    left: 10px;
+    top: 10px;
+    background: white;
+    padding: 8px;
+    z-index: 1000;
+  }
+
   body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }

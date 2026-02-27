@@ -16,13 +16,11 @@
   <body>
     <div class="flex flex-col min-h-screen">
       <header>
-        <a href="index.html">
-          <h1>Auction House</h1>
-        </a>
+        <h1><a href="index.html">Auction House</a></h1>
       </header>
 
       <main>
-        <h1 class="text-center mb-7 mt-12">Register</h1>
+        <h2 class="text-center mb-7 mt-12">Register</h2>
 
         <p class="text-center">
           Register a user, then Login to use Auction House
@@ -30,7 +28,13 @@
 
         <!-- register form -->
         <div class="m-1">
-          <div class="register-message" id="registerMessage"></div>
+          <div
+            class="register-message"
+            id="registerMessage"
+            role="status"
+            aria-live="polite"
+          ></div>
+
           <form
             id="registerForm"
             class="mx-auto flex flex-col max-w-125 w-[95%]"
@@ -41,14 +45,20 @@
               type="text"
               name="name"
               id="nameRegistration"
-              aria-label="type a username"
               aria-describedby="nameError"
               pattern="[a-zA-Z0-9_]+"
               title="Name must not contain spaces or special characters (letters, numbers, and underscores only)."
               required
               placeholder="name"
+              autocomplete="username"
             />
-            <small class="error-message" id="nameError"></small>
+
+            <!-- error message -->
+            <small
+              class="error-message"
+              id="nameError"
+              aria-live="polite"
+            ></small>
 
             <!-- email -->
             <label for="emailRegistration">Email</label>
@@ -59,9 +69,15 @@
               required
               title="Enter an email address that ends in @stud.noroff.no"
               placeholder="example@stud.noroff.no"
-              aria-label="type an email address that ends in @stud.noroff.no"
+              autocomplete="email"
             />
-            <small class="error-message bg-red-400" id="emailError"></small>
+
+            <!-- error message -->
+            <small
+              class="error-message bg-red-400"
+              id="emailError"
+              aria-live="polite"
+            ></small>
 
             <!-- password -->
             <label for="passwordRegistration">Password</label>
@@ -69,15 +85,23 @@
               type="password"
               name="password"
               id="passwordRegistration"
-              aria-label="type a password that is minimum 8 characters"
-              aria-describedby="passwordError"
+              aria-describedby="passwordHint  passwordError"
               required
               title="password need to be minimum 8 characters"
               placeholder="password"
               minlength="8"
+              autocomplete="new-password"
             />
-            <small class="error-message" id="passwordError"></small>
-            <p class="mb-10">Password need to be minimum 8 characters</p>
+
+            <!-- error message -->
+            <small
+              class="error-message"
+              id="passwordError"
+              aria-live="polite"
+            ></small>
+            <p id="passwordHint" class="mb-10">
+              Password need to be minimum 8 characters
+            </p>
 
             <!-- button to register -->
             <div>

@@ -16,19 +16,23 @@
   <body>
     <div class="flex flex-col min-h-screen">
       <header>
-        <a href="index.html">
-          <h1>Auction House</h1>
-        </a>
+        <h1><a href="index.html">Auction House </a></h1>
       </header>
 
       <main>
-        <h1 class="text-center mb-7 mt-12">Login</h1>
+        <h2 class="text-center mb-7 mt-12">Login</h2>
 
         <p class="text-center">Login to use Auction House</p>
 
         <!-- login form -->
         <div class="m-1">
-          <div class="login-message" id="loginMessage"></div>
+          <div
+            class="login-message"
+            id="loginMessage"
+            role="status"
+            aria-live="polite"
+          ></div>
+
           <form id="loginForm" class="mx-auto flex flex-col max-w-125 w-[95%]">
             <!-- email -->
             <label for="emailLogin">Email</label>
@@ -39,9 +43,15 @@
               required
               title="Enter an email address that ends in @stud.noroff.no"
               placeholder="example@stud.noroff.no"
-              aria-label="type an email address that ends in @stud.noroff.no"
+              aria-describedby="emailError"
+              autocomplete="email"
             />
-            <small class="error-message" id="emailError"></small>
+            <!-- error message -->
+            <small
+              class="error-message"
+              id="emailError"
+              aria-live="polite"
+            ></small>
 
             <!-- password -->
             <label for="passwordLogin">Password</label>
@@ -53,8 +63,16 @@
               title="password need to be minimum 8 characters"
               placeholder="password"
               minlength="8"
+              aria-describedby="passwordError"
+              autocomplete="current-password"
             />
-            <small class="error-message" id="passwordError"></small>
+
+            <!-- error message -->
+            <small
+              class="error-message"
+              id="passwordError"
+              aria-live="polite"
+            ></small>
 
             <!-- button to register -->
             <div>

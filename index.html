@@ -15,12 +15,13 @@
   </head>
 
   <body>
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
     <div class="flex flex-col min-h-screen">
       <header>
         <h1>Auction House</h1>
       </header>
 
-      <main>
+      <main id="mainContent">
         <!-- Logged in UI -->
         <div id="userContent" class="hide m-2 grid grid-cols-6 md:grid-cols-10">
           <!-- credit -->
@@ -29,22 +30,20 @@
             aria-label="Your credit to spend"
             class="md:col-start-2"
           ></div>
+
           <!-- avatar -->
-          <a
-            href="profile.html"
-            id="avatar"
-            aria-label="Go to profile"
-            class="col-start-4 md:col-start-4"
-          >
+          <a href="profile.html" id="avatar" class="col-start-4 md:col-start-4">
+            <span class="sr-only">Go to profile</span>
           </a>
+
           <!-- logout button -->
-          <a
-            href="index.html"
+          <button
             id="logoutBtn"
             aria-label="Logout from Auction House"
-            class="col-start-6 md:col-start-10"
-            >Logout
-          </a>
+            class="col-start-6 md:col-start-10 cursor-pointer"
+          >
+            Logout
+          </button>
         </div>
         <hr />
 
@@ -57,26 +56,25 @@
 
           <!-- register | login buttons -->
           <div class="justify-center flex gap-3">
-            <a href="register.html"
-              ><button
-                class="bg-gray-50 hover:bg-gray-300 border border-black px-2 rounded cursor-pointer"
-              >
-                Register
-              </button></a
+            <!-- register -->
+            <a
+              href="register.html"
+              class="bg-gray-50 hover:bg-gray-300 border border-black px-2 rounded cursor-pointer"
+              >Register</a
             >
 
-            <a href="login.html"
-              ><button
-                class="bg-gray-50 hover:bg-gray-300 border border-black px-2 rounded cursor-pointer"
-              >
-                Login
-              </button></a
+            <!-- login -->
+            <a
+              href="login.html"
+              class="bg-gray-50 hover:bg-gray-300 border border-black px-2 rounded cursor-pointer"
+              >Login</a
             >
           </div>
         </div>
 
         <!-- create a listing -->
         <div class="grid grid-cols-6 m-2 mt-5 md:grid-cols-10">
+          <!-- profile -->
           <a
             href="profile.html"
             id="createListing"
@@ -90,18 +88,22 @@
           role="search"
           class="flex justify-center items-center mt-10 ml-2 mr-2"
         >
+          <label for="searchItem" class="sr-only">Search listings</label>
           <input
             type="search"
             id="searchItem"
             name="search"
             placeholder="search for items"
-            aria-label="search for items"
             class="w-100"
           />
         </form>
 
         <!-- filter -->
-        <div class="flex justify-center gap-2 mt-2">
+        <div
+          class="flex justify-center gap-2 mt-2"
+          role="group"
+          aria-label="Listing filters"
+        >
           <!-- newest -->
           <button
             id="filterNewest"
@@ -113,6 +115,9 @@
 
         <!-- tag filter -->
         <div class="flex justify-center mt-3 gap-2">
+          <label for="tagFilter" class="sr-only"
+            >Filter listings by category</label
+          >
           <select
             id="tagFilter"
             class="cursor-pointer border rounded-sm p-1 hover:bg-gray-200"
@@ -125,8 +130,10 @@
           </select>
         </div>
 
+        <h2 class="sr-only">Auctin listings</h2>
+
         <!-- Auction House item listings -->
-        <div id="saleItems"></div>
+        <div id="saleItems" aria-live="polite"></div>
       </main>
 
       <footer>

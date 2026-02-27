@@ -15,9 +15,7 @@
   <body>
     <div class="flex flex-col min-h-screen">
       <header>
-        <a href="index.html">
-          <h1>Auction House</h1>
-        </a>
+        <h1><a href="index.html">Auction House </a></h1>
       </header>
 
       <main>
@@ -25,9 +23,11 @@
           <!-- credit -->
           <div
             id="credits"
-            aria-label="Your credit to spend"
+            role="status"
+            aria-live="polite"
             class="md:col-start-2"
           ></div>
+
           <!-- avatar -->
           <a
             href="profile.html"
@@ -39,30 +39,35 @@
         </div>
         <hr />
 
-        <h1 class="text-center mb-7 mt-2">Listing</h1>
+        <h2 class="text-center mb-7 mt-2">Listing</h2>
         <hr class="mb-5" />
 
         <!-- auction item -->
         <section class="mx-auto flex flex-col w-[95%] md:w-5xl mb-4 border-2">
           <div id="listingGallary" class="flex flex-col gap-2 bg-gray-300">
-            <img id="mainImage" class="object-contain" />
+            <img id="mainImage" alt="Listing image" class="object-contain" />
             <hr />
-            <div id="thumbnailRow" class="flex gap-2"></div>
+            <button id="thumbnailRow" class="flex gap-2">
+              <img alt="Thumbnail image 1" />
+            </button>
           </div>
           <hr />
 
           <!-- title -->
-           <p class="bg-gray-300 pl-1">
+          <div class="bg-gray-300 pl-1">
             <strong>Title:</strong>
-          <h3 id="listingTitle" class="pl-1 bg-gray-300 break-all"></h3>
-          </p>
+            <h3 id="listingTitle" class="pl-1 bg-gray-300 break-all"></h3>
+          </div>
           <hr />
 
           <!-- description -->
-           <p class="bg-gray-300 pl-1">
+          <div class="bg-gray-300 pl-1">
             <strong>Description:</strong>
-          <div id="listingDescription" class="pl-1 bg-gray-300 break-all"></div>
-          </p>
+            <div
+              id="listingDescription"
+              class="pl-1 bg-gray-300 break-all"
+            ></div>
+          </div>
           <hr />
 
           <!-- seller -->
@@ -104,18 +109,26 @@
         >
           <h3>Edit Listing</h3>
           <!-- edit title -->
+          <label for="editTitle">Title</label>
           <input id="editTitle" placeholder="Title" />
+
           <!-- edit description -->
+          <label for="editDescription">Description</label>
           <textarea
             id="editDescription"
             class="border mb-4"
             placeholder="Description"
           ></textarea>
+
           <!-- edit image -->
+          <label for="editImages">Image URL (comma separated)</label>
           <input id="editImages" placeholder="Image URLs (comma separated)" />
+
           <!-- edit tags -->
+          <label for="listingTagsInput">Tags (comma separated)</label>
           <input id="listingTagsInput" placeholder="Tags (comma separated)" />
 
+          <!-- save edit btn -->
           <button
             id="saveEditBtn"
             class="bg-blue-200 hover:bg-blue-300 cursor-pointer p-1 mt-2"
@@ -123,7 +136,7 @@
             Save changes
           </button>
 
-          <p id="editMessage"></p>
+          <p id="editMessage" aria-live="polite"></p>
         </section>
 
         <!-- highest bid -->
@@ -132,7 +145,7 @@
         >
           <p class="ml-1">
             <strong>Highest bid:</strong>
-            <span id="currentBid">No bids yet</span>
+            <span id="currentBid" aria-live="polite">No bids yet</span>
           </p>
         </section>
 
@@ -141,7 +154,7 @@
           class="mx-auto flex flex-col w-[95%] md:w-5xl border-2 pt-2 bg-gray-300"
         >
           <div class="bid-section">
-            <p class="ml-1">Enter your bid</p>
+            <label class="ml-1 block">Enter your bid</label>
             <input
               class="border-2 h-8 ml-1"
               type="number"
@@ -155,16 +168,17 @@
               Place Bid
             </button>
 
-            <p id="bidMessage"></p>
+            <p id="bidMessage" aria-live="assertive"></p>
           </div>
         </section>
         <hr class="mt-5" />
 
         <!-- all bids on an item -->
         <section
+          aria-labelledby="bidHistoryHeading"
           class="mx-auto flex flex-col w-[95%] md:w-5xl border-2 pt-2 pl-1 pb-1 mt-5 mb-5"
         >
-          <h3 class="underline">Bid History</h3>
+          <h3 id="bidHistoryHeading" class="underline">Bid History</h3>
           <ul id="bidHistory"></ul>
         </section>
       </main>

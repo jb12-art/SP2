@@ -17,9 +17,7 @@
   <body>
     <div class="flex flex-col min-h-screen">
       <header>
-        <a href="index.html">
-          <h1>Auction House</h1>
-        </a>
+        <h1><a href="index.html">Auction House</a></h1>
       </header>
 
       <main>
@@ -28,23 +26,31 @@
           <!-- credit -->
           <div
             id="credits"
-            aria-label="Your credit to spend"
+            aria-live="polite"
+            role="status"
             class="md:col-start-2"
           ></div>
+
           <!-- avatar -->
-          <a href="profile.html" id="avatar" class="col-start-4 md:col-start-4">
-          </a>
-          <!-- logout btn -->
           <a
-            href="index.html"
-            id="logoutBtn"
-            class="col-start-6 md:col-start-10"
-            >Logout</a
+            href="profile.html"
+            id="avatar"
+            aria-label="View your profile"
+            class="col-start-4 md:col-start-4"
           >
+          </a>
+
+          <!-- logout btn -->
+          <button
+            id="logoutBtn"
+            class="col-start-6 md:col-start-10 cursor-pointer"
+          >
+            Logout
+          </button>
         </div>
         <hr />
 
-        <h1 class="text-center mt-2">Profile</h1>
+        <h2 class="text-center mt-2">Profile</h2>
         <!-- banner -->
         <div class="h-24 mb-2" id="bannerImg"></div>
 
@@ -66,15 +72,18 @@
           <h3 class="underline mb-5">Create listing</h3>
 
           <!-- image input -->
+          <label for="listingImageInput">Image URL (comma separated)</label>
           <input
             id="listingImageInput"
             placeholder="Image URL (comma separated)"
           />
 
           <!-- title input -->
+          <label for="listingTitleInput">Title</label>
           <input id="listingTitleInput" placeholder="Title" />
 
           <!-- description input -->
+          <label for="listingDescriptionInput">Description</label>
           <textarea
             id="listingDescriptionInput"
             class="border mb-5"
@@ -86,6 +95,7 @@
           <input type="datetime-local" id="listingEndDateInput" />
 
           <!-- tags -->
+          <label for="listingTagsInput">Tags (comma separated)</label>
           <input id="listingTagsInput" placeholder="Tags (comma separated)" />
 
           <!-- submit button -->
@@ -97,7 +107,7 @@
           </button>
 
           <!-- create message -->
-          <p id="createListingMessage"></p>
+          <p id="createListingMessage" aria-live="polite"></p>
         </div>
 
         <!-- profile bio text -->
@@ -141,22 +151,25 @@
         <hr class="mx-auto w-[95%] md:w-5xl" />
 
         <!-- user listings in profile -->
-        <section class="mx-auto w-[95%] mb-14 md:w-5xl">
-          <h4>Your Listings</h4>
+        <section
+          aria-labelledby="userListingsHeading"
+          class="mx-auto w-[95%] mb-14 md:w-5xl"
+        >
+          <h3 id="userListingsHeading">Your Listings</h3>
           <div id="userListings" class="grid grid-cols-2 gap-4"></div>
         </section>
         <hr class="mx-auto w-[95%] md:w-5xl" />
 
         <!-- user bids in profile -->
         <section class="mx-auto w-[95%] mb-14 md:w-5xl">
-          <h4>Your Bids</h4>
+          <h3>Your Bids</h3>
           <div id="userBids" class="grid grid-cols-2 gap-4"></div>
         </section>
         <hr class="mx-auto w-[95%] md:w-5xl" />
 
         <!-- user wins in profile -->
         <section class="mx-auto w-[95%] mb-14 md:w-5xl">
-          <h4>Your Wins</h4>
+          <h3>Your Wins</h3>
           <div id="userWins" class="grid grid-cols-2 gap-4"></div>
         </section>
         <hr class="mx-auto w-[95%] md:w-5xl mb-14" />
@@ -166,13 +179,14 @@
           <small
             class="block mx-auto w-fit bg-red-400"
             id="profileFormError"
+            aria-live="assertive"
           ></small>
 
           <form id="profileForm" class="mx-auto flex flex-col w-[95%] md:w-5xl">
-            <h4 class="mb-2">Edit your profile</h4>
+            <h3 class="mb-2">Edit your profile</h3>
 
             <!-- avatar -->
-            <label for="avatar Url">Avatar</label>
+            <label for="avatarUrl">Avatar</label>
             <input
               id="avatarUrl"
               type="url"
@@ -180,7 +194,7 @@
               placeholder="avatar url"
             />
             <!-- banner -->
-            <label for="banner Url">Banner</label>
+            <label for="bannerUrl">Banner</label>
             <input
               id="bannerUrl"
               type="url"
@@ -189,7 +203,7 @@
             />
 
             <!-- bio -->
-            <label for="bio text">Bio</label>
+            <label for="bioText">Bio</label>
             <textarea
               class="h-20 border mb-4 pl-2"
               id="bioText"
