@@ -98,6 +98,13 @@ No build tools are required.
 
 ---
 
+## To run the development with Tailwindcss
+
+- Be in the root folder
+- cd SP2
+- npm run dev
+- Open with live server
+
 ## Author
 
 jb12-art

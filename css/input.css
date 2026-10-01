@@ -2,6 +2,8 @@
 /* Global shared tailwindcss styles */
 
 @import 'tailwindcss';
+@source "../*.html";
+@source "../js/**/*.js";
 
 /* Base reset & global styles */
 @layer base {
@@ -34,6 +36,7 @@
 
   body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: floralwhite;
   }
 
   header {
@@ -119,10 +122,6 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-  }
-
-  #logoutBtn {
-    background-color: aqua;
   }
 
   #createListing {
