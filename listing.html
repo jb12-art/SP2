@@ -45,11 +45,17 @@
         <!-- auction item -->
         <section class="mx-auto flex flex-col w-[95%] md:w-5xl mb-4 border-2">
           <div id="listingGallary" class="flex flex-col gap-2 bg-gray-300">
-            <img id="mainImage" alt="Listing image" class="object-contain" />
+            <img
+              id="mainImage"
+              alt="Main Listing product image"
+              class="object-contain"
+            />
             <hr />
-            <button id="thumbnailRow" class="flex gap-2">
-              <img alt="Thumbnail image 1" />
-            </button>
+            <div
+              id="thumbnailRow"
+              class="flex gap-2"
+              aria-label="Product thumbnail"
+            ></div>
           </div>
           <hr />
 
@@ -154,7 +160,7 @@
           class="mx-auto flex flex-col w-[95%] md:w-5xl border-2 pt-2 bg-gray-300"
         >
           <div class="bid-section">
-            <label class="ml-1 block">Enter your bid</label>
+            <label for="bidAmount" class="ml-1 block">Enter your bid</label>
             <input
               class="border-2 h-8 ml-1"
               type="number"

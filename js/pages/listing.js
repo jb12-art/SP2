@@ -160,9 +160,10 @@ async function loadListing() {
 
     thumbnailRow.innerHTML = '';
 
-    media.forEach((img) => {
+    media.forEach((img, index) => {
       const thumb = document.createElement('img');
       thumb.src = img.url;
+      thumb.alt = `${listing.title || 'Auction item'} gallery item preview ${index + 1}`;
       thumb.classList.add('w-20', 'cursor-pointer');
 
       thumb.addEventListener('click', () => {

@@ -91,7 +91,7 @@
           ></textarea>
 
           <!-- end date -->
-          <small>End date</small>
+          <label for="listingEndDateInput">End date</label>
           <input type="datetime-local" id="listingEndDateInput" />
 
           <!-- tags -->
@@ -111,12 +111,18 @@
         </div>
 
         <!-- profile bio text -->
-        <section class="mx-auto flex flex-col w-[95%] mb-14 mt-6 md:w-5xl">
+        <section
+          aria-label="Profile description"
+          class="mx-auto flex flex-col w-[95%] mb-14 mt-6 md:w-5xl"
+        >
           <div id="profileText" class="border border-black"></div>
         </section>
 
         <!-- name, email, (stats of all) = listings, bids, wins -->
-        <section class="mx-auto flex flex-col w-[95%] mb-14 md:w-5xl">
+        <section
+          aria-label="User account details"
+          class="mx-auto flex flex-col w-[95%] mb-14 md:w-5xl"
+        >
           <!-- name -->
           <p>Name:</p>
           <div id="userName"></div>
@@ -161,16 +167,22 @@
         <hr class="mx-auto w-[95%] md:w-5xl" />
 
         <!-- user bids in profile -->
-        <section class="mx-auto w-[95%] mb-14 md:w-5xl">
-          <h3>Your Bids</h3>
+        <section
+          aria-labelledby="userBidsHeading"
+          class="mx-auto w-[95%] mb-14 md:w-5xl"
+        >
+          <h3 id="userBidsHeading">Your Bids</h3>
           <div id="userBids" class="grid grid-cols-2 gap-4"></div>
         </section>
         <hr class="mx-auto w-[95%] md:w-5xl" />
 
         <!-- user wins in profile -->
-        <section class="mx-auto w-[95%] mb-14 md:w-5xl">
-          <h3>Your Wins</h3>
-          <div id="userWins" class="grid grid-cols-2 gap-4"></div>
+        <section
+          aria-labelledby="userWinsHeading"
+          class="mx-auto w-[95%] mb-14 md:w-5xl"
+        >
+          <h3 id="userWinsHeading">Your Wins</h3>
+          <div id="userWinsH" class="grid grid-cols-2 gap-4"></div>
         </section>
         <hr class="mx-auto w-[95%] md:w-5xl mb-14" />
 
